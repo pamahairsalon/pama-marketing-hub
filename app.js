@@ -1,49 +1,76 @@
-const search = document.querySelector("#search");
-const cards = [...document.querySelectorAll(".card")];
-const filterButtons = [...document.querySelectorAll("[data-filter]")];
-const empty = document.querySelector("#empty");
-let selected = "全部";
+const searchInput = document.querySelector("#contentSearch");
+const contentCards = [...document.querySelectorAll(".content-card, .care-card")];
+const postFilters = [...document.querySelectorAll("[data-filter]")];
+const careFilters = [...document.querySelectorAll("[data-care-filter]")];
 
-function updateCards() {
-  const query = (search?.value || "").trim().toLowerCase();
-  let count = 0;
-  cards.forEach(card => {
-    const categoryMatch = selected === "全部" || card.dataset.cat === selected;
-    const textMatch = !query || (card.dataset.terms + " " + card.innerText).toLowerCase().includes(query);
-    card.hidden = !(categoryMatch && textMatch);
-    if (!card.hidden) count++;
+let postCategory = "all";
+let careCategory = "all";
+
+function filterContent() {
+  const query = (searchInput?.value || "").trim().toLocaleLowerCase();
+  contentCards.forEach(card => {
+    const category = card.dataset.category;
+    const kind = card.dataset.kind;
+    const categoryMatch = kind === "post"
+      ? (postCategory === "all" || category === postCategory)
+      : (careCategory === "all" || category === careCategory);
+    const queryMatch = !query || (card.dataset.search + " " + card.innerText).toLocaleLowerCase().includes(query);
+    card.hidden = !(categoryMatch && queryMatch);
   });
-  if (empty) empty.hidden = count > 0;
 }
-search?.addEventListener("input", updateCards);
-search?.addEventListener("keydown", e => { if (e.key === "Enter") document.querySelector("#library")?.scrollIntoView({behavior:"smooth"}); });
-filterButtons.forEach(button => button.addEventListener("click", () => {
-  selected = button.dataset.filter;
-  filterButtons.forEach(item => item.classList.toggle("active", item === button));
-  updateCards();
+
+searchInput?.addEventListener("input", filterContent);
+searchInput?.addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    const firstVisible = contentCards.find(card => !card.hidden);
+    firstVisible?.scrollIntoView({behavior:"smooth", block:"center"});
+  }
+});
+
+postFilters.forEach(button => button.addEventListener("click", () => {
+  postCategory = button.dataset.filter;
+  postFilters.forEach(item => item.classList.toggle("active", item === button));
+  filterContent();
+}));
+careFilters.forEach(button => button.addEventListener("click", () => {
+  careCategory = button.dataset.careFilter;
+  careFilters.forEach(item => item.classList.toggle("active", item === button));
+  filterContent();
 }));
 
 const toast = document.querySelector("#toast");
 let toastTimer;
 document.querySelectorAll("[data-copy]").forEach(button => button.addEventListener("click", async () => {
-  const content = button.dataset.copy || "";
-  let ok = false;
-  try { await navigator.clipboard.writeText(content); ok = true; }
-  catch {
-    const field = document.createElement("textarea");
-    field.value = content; document.body.appendChild(field); field.select();
-    ok = document.execCommand("copy"); field.remove();
+  const text = button.dataset.copy || "";
+  let copied = false;
+  try {
+    await navigator.clipboard.writeText(text);
+    copied = true;
+  } catch {
+    const helper = document.createElement("textarea");
+    helper.value = text;
+    helper.setAttribute("readonly", "");
+    helper.style.position = "fixed";
+    helper.style.opacity = "0";
+    document.body.appendChild(helper);
+    helper.select();
+    copied = document.execCommand("copy");
+    helper.remove();
   }
-  toast.textContent = ok ? "文案已複製，可以貼到社群平台囉！" : "複製未成功，請手動選取文字。";
+  toast.textContent = copied ? "已複製，可以貼到社群或訊息中囉！" : "複製未成功，請手動選取文字。";
   toast.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("show"), 2300);
+  window.clearTimeout(toastTimer);
+  toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2400);
 }));
 
-const menuButton = document.querySelector(".menu");
+const menuButton = document.querySelector(".menu-toggle");
 menuButton?.addEventListener("click", () => {
-  const nav = document.querySelector(".nav");
-  const opened = menuButton.getAttribute("aria-expanded") === "true";
-  menuButton.setAttribute("aria-expanded", String(!opened));
-  nav.classList.toggle("mobile-open", !opened);
+  const nav = document.querySelector("#mainNav");
+  const expanded = menuButton.getAttribute("aria-expanded") === "true";
+  menuButton.setAttribute("aria-expanded", String(!expanded));
+  nav?.classList.toggle("mobile-open", !expanded);
 });
+document.querySelectorAll("#mainNav a").forEach(link => link.addEventListener("click", () => {
+  document.querySelector("#mainNav")?.classList.remove("mobile-open");
+  menuButton?.setAttribute("aria-expanded", "false");
+}));
