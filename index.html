@@ -4,82 +4,209 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#375B57">
-  <meta name="description" content="PAMA Marketing Hub｜帕瑪設計師日常助手，提供社群發文靈感與顧客關懷話術。">
-  <title>PAMA Marketing Hub｜帕瑪設計師日常助手</title>
+  <meta name="description" content="PAMA Marketing Hub｜帕瑪設計師日常助手。提供社群發文靈感、顧客關懷話術與門店行銷參考。">
+  <title>PAMA Marketing Hub｜設計師日常助手</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="header">
-  <a class="brand" href="#" aria-label="PAMA Marketing Hub 首頁"><span class="brand-symbol">P</span><span class="brand-copy"><b>PAMA</b><small>MARKETING HUB</small></span></a>
-  <nav class="nav" aria-label="主要導覽"><a href="#start">使用入口</a><a href="#library">靈感內容</a><a href="#topics">話題與月曆</a></nav>
-  <a class="brand-note" href="#about">PROFESSIONAL · PASSION · MODERN · ART</a>
-  <button class="menu" aria-label="開啟選單" aria-expanded="false">☰</button>
+<header class="site-header">
+  <a class="brand" href="#" aria-label="PAMA Marketing Hub 首頁">
+    <span class="brand-mark">P</span>
+    <span class="brand-copy"><b>PAMA</b><small>MARKETING HUB</small></span>
+  </a>
+  <nav class="main-nav" id="mainNav">
+    <a href="#posting">我要發文</a>
+    <a href="#care">我要關心顧客</a>
+    <a href="#inspiration">話題靈感</a>
+  </nav>
+  <a class="header-link" href="#guide">使用小提醒 <span>↗</span></a>
+  <button class="menu-toggle" aria-label="開啟導覽選單" aria-expanded="false">☰</button>
 </header>
 
 <main>
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow"><span></span>PAMA SALON · EST. 1989</p>
-      <h1>把每一次分享，<br>變成關係的開始。</h1>
-      <p class="lead">不知道今天發什麼？不確定怎麼關心顧客？<br>從一個情境開始，找到自然、實用的靈感。</p>
-      <a class="hero-jump" href="#start">找到今天需要的幫助 <span>↓</span></a>
+      <p class="eyebrow"><span></span> PAMA DESIGNER'S DAILY ASSISTANT</p>
+      <h1>每一次服務之後，<br><em>都是關係的開始。</em></h1>
+      <p class="hero-lead">不知道今天發什麼？不知道怎麼自然關心顧客？<br>從這裡找到靈感，讓專業被看見，也讓關係持續。</p>
+      <div class="hero-search">
+        <span aria-hidden="true">⌕</span>
+        <input id="contentSearch" type="search" placeholder="搜尋：染髮作品、護髮提醒、久未回訪⋯" aria-label="搜尋發文與顧客關懷內容">
+        <kbd>搜尋</kbd>
+      </div>
+      <p class="hero-note">給每一位設計師的日常靈感與溝通參考</p>
     </div>
-    <div class="hero-art" aria-label="PAMA 品牌形象視覺">
-      <div class="hero-art-ring"></div><div class="hero-art-shape"></div>
-      <p class="hero-art-title">THE ART<br>OF CONNECTION</p>
-      <p class="hero-art-foot">GOOD HAIR. GOOD CARE.<br>GOOD CONNECTION.</p>
-      <span class="hero-art-index">01 / PAMA</span>
-    </div>
-  </section>
-
-  <section class="start-section" id="start">
-    <div class="section-kicker"><span>START HERE</span><i></i><span>從你的需求開始</span></div>
-    <div class="section-title"><h2>今天，想做哪一件事？</h2><p>選擇你現在需要的情境，快速找到可參考的內容。</p></div>
-    <div class="entry-grid">
-      <button class="entry-card entry-post" data-mode="post">
-        <span class="entry-number">01</span><span class="entry-icon">✳</span>
-        <span class="entry-content"><b>我要發文</b><small>作品分享・髮型知識・日常靈感</small><em>找發文靈感 <span>↗</span></em></span>
-      </button>
-      <button class="entry-card entry-care" data-mode="care">
-        <span class="entry-number">02</span><span class="entry-icon">♡</span>
-        <span class="entry-content"><b>我要關心顧客</b><small>術後關心・居家照護・回訪邀約</small><em>找關懷話術 <span>↗</span></em></span>
-      </button>
+    <div class="hero-visual" aria-label="髮型時尚編輯視覺">
+      <div class="hero-visual-shape"></div>
+      <div class="hero-ring"></div>
+      <p class="hero-visual-top">THE ART<br>OF CONNECTION</p>
+      <p class="hero-visual-bottom">PROFESSIONAL · PASSION<br>MODERN · ART</p>
+      <span class="hero-index">P / 01</span>
     </div>
   </section>
 
-  <section class="library-section" id="library">
-    <div class="library-head">
-      <div><p class="eyebrow muted">DESIGNER'S TOOLKIT</p><h2 id="libraryTitle">挑一個情境，開始找靈感。</h2><p id="libraryIntro">所有內容都可以依照自己的說話習慣調整，再分享給顧客。</p></div>
-      <div class="mode-switch" role="group" aria-label="選擇內容類型"><button class="mode-button active" data-mode="post">我要發文</button><button class="mode-button" data-mode="care">我要關心顧客</button></div>
+  <section class="start-section" aria-labelledby="start-title">
+    <div class="section-intro">
+      <p class="eyebrow muted">START FROM HERE</p>
+      <h2 id="start-title">今天，你需要哪一種幫助？</h2>
+      <p>選擇現在的情境，找到可以參考的文字與做法。</p>
     </div>
-    <div class="search-row"><label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="搜尋情境，例如：染髮後、作品分享、久未回訪⋯" aria-label="搜尋情境與文案"><kbd>SEARCH</kbd></label><span class="search-hint">選擇下方分類，或直接搜尋關鍵字</span></div>
-    <div class="filters" id="filters" aria-label="內容分類"></div>
-    <div class="content-grid" id="contentGrid"></div>
-    <p class="empty" id="empty" hidden>目前沒有符合的內容，試試其他關鍵字或分類。</p>
-    <p class="usage-note"><span>✦</span> 內容是溝通靈感，不是制式話術。請依顧客實際服務、髮況與互動關係調整。</p>
+    <div class="start-grid">
+      <a class="start-card post-start" href="#posting">
+        <div class="start-card-top"><span class="start-number">01</span><span class="start-icon">✳</span></div>
+        <div><p>SHARE YOUR WORK</p><h3>我想發文</h3><span>作品分享・髮型知識・日常限動</span></div>
+        <span class="start-arrow">探索發文靈感　↗</span>
+      </a>
+      <a class="start-card care-start" href="#care">
+        <div class="start-card-top"><span class="start-number">02</span><span class="start-icon">♡</span></div>
+        <div><p>STAY CONNECTED</p><h3>我想關心顧客</h3><span>服務後關心・居家照護・回訪邀約</span></div>
+        <span class="start-arrow">尋找關懷話術　↗</span>
+      </a>
+    </div>
   </section>
 
-  <section class="topics-section" id="topics">
-    <div class="section-title"><p class="eyebrow muted">IDEAS TO KEEP CLOSE</p><h2>靈感，也可以隨時補充。</h2><p>當你想找新的分享方向，可以從這些主題開始。</p></div>
-    <div class="topic-grid">
-      <article class="topic-card"><span>01 / CONTENT IDEA</span><h3>季節髮型提案</h3><p>換季、旅行、聚會與不同生活場合的造型分享。</p><a href="#library" data-topic-search="季節">尋找相關靈感 ↗</a></article>
-      <article class="topic-card"><span>02 / HAIR CARE</span><h3>日常髮絲照護</h3><p>整理技巧、洗護習慣與依個人髮況給予的照護提醒。</p><a href="#library" data-topic-search="照護">尋找相關靈感 ↗</a></article>
-      <article class="topic-card"><span>03 / CUSTOMER CARE</span><h3>讓關心持續發生</h3><p>從服務後的問候，到平常自然的互動與回訪邀約。</p><a href="#library" data-topic-mode="care">查看關懷話術 ↗</a></article>
+  <section class="content-section posting-section" id="posting">
+    <div class="section-heading">
+      <div><p class="eyebrow muted">01 / SOCIAL CONTENT</p><h2>我想發文</h2><p>把作品、專業與日常，轉化成顧客看得懂也願意停留的內容。</p></div>
+      <span class="section-aside">POST WITH PURPOSE</span>
     </div>
-    <div class="calendar-strip"><div><p class="eyebrow muted">MONTHLY REMINDER</p><b>別忘了替自己的內容安排一點節奏。</b><small>可以依門店活動、節慶與作品更新，安排每週分享主題。</small></div><a href="https://github.com/pamahairsalon/pama-marketing-hub" target="_blank" rel="noopener">查看平台內容更新 ↗</a></div>
+    <div class="filter-row" role="group" aria-label="發文內容分類">
+      <button class="filter-button active" data-filter="all">全部內容</button>
+      <button class="filter-button" data-filter="作品分享">作品分享</button>
+      <button class="filter-button" data-filter="髮型知識">髮型知識</button>
+      <button class="filter-button" data-filter="養護分享">養護分享</button>
+      <button class="filter-button" data-filter="日常限動">日常限動</button>
+    </div>
+    <div class="content-grid" id="postGrid">
+      <article class="content-card" data-kind="post" data-category="作品分享" data-search="作品分享 染髮 髮色 造型 作品">
+        <div class="card-visual visual-hair"><span>STYLE NOTE / 01</span><b>COLOR<br><i>STORY</i></b></div>
+        <div class="card-content">
+          <div class="card-meta"><span>作品分享</span><small>適合：染髮作品</small></div>
+          <h3>讓作品自己說話</h3>
+          <p>分享這次造型的設計想法、色彩特色與適合的風格。</p>
+          <div class="sample-copy">每一次的髮色設計，都希望能更貼近你的日常與喜好。這次選擇＿＿＿＿色調，讓整體感覺多了一點＿＿＿＿，在不同光線下也有細緻變化。</div>
+          <p class="edit-hint">發布前補上實際髮色、作品特色與顧客同意使用的照片。</p>
+          <button class="copy-button" data-copy="每一次的髮色設計，都希望能更貼近你的日常與喜好。這次選擇＿＿＿＿色調，讓整體感覺多了一點＿＿＿＿，在不同光線下也有細緻變化。">複製文案 <span>↗</span></button>
+        </div>
+      </article>
+      <article class="content-card" data-kind="post" data-category="髮型知識" data-search="髮型知識 剪髮 層次 臉型 整理技巧">
+        <div class="card-visual visual-cut"><span>STYLE NOTE / 02</span><b>FORM<br><i>& FLOW</i></b></div>
+        <div class="card-content">
+          <div class="card-meta"><span>髮型知識</span><small>適合：剪髮作品</small></div>
+          <h3>分享造型背後的小細節</h3>
+          <p>讓顧客知道，適合自己的剪裁不只好看，也要好整理。</p>
+          <div class="sample-copy">好的剪裁不只是長度的改變，也包含線條、層次與整體比例。這次依照＿＿＿＿的需求調整＿＿＿＿，希望讓日常整理更輕鬆，也更能呈現自己的風格。</div>
+          <p class="edit-hint">可依作品補充層次、瀏海、輪廓或整理方式。</p>
+          <button class="copy-button" data-copy="好的剪裁不只是長度的改變，也包含線條、層次與整體比例。這次依照＿＿＿＿的需求調整＿＿＿＿，希望讓日常整理更輕鬆，也更能呈現自己的風格。">複製文案 <span>↗</span></button>
+        </div>
+      </article>
+      <article class="content-card" data-kind="post" data-category="養護分享" data-search="養護分享 護髮 髮質 頭皮 居家照護">
+        <div class="card-visual visual-care"><span>STYLE NOTE / 03</span><b>CARE<br><i>RITUAL</i></b></div>
+        <div class="card-content">
+          <div class="card-meta"><span>養護分享</span><small>適合：護髮知識</small></div>
+          <h3>把專業照護帶進日常</h3>
+          <p>用簡單的方式分享髮況觀察與居家照護方向。</p>
+          <div class="sample-copy">頭髮的狀態，除了沙龍裡的整理，平時照護也很重要。若最近覺得髮絲比較＿＿＿＿，可以先從＿＿＿＿這個習慣開始調整；也歡迎下次來店時，一起看看適合你的照護方式。</div>
+          <p class="edit-hint">照護建議請依顧客實際髮況及專業評估調整。</p>
+          <button class="copy-button" data-copy="頭髮的狀態，除了沙龍裡的整理，平時照護也很重要。若最近覺得髮絲比較＿＿＿＿，可以先從＿＿＿＿這個習慣開始調整；也歡迎下次來店時，一起看看適合你的照護方式。">複製文案 <span>↗</span></button>
+        </div>
+      </article>
+      <article class="content-card" data-kind="post" data-category="日常限動" data-search="日常限動 限時動態 互動 問答 投票">
+        <div class="card-visual visual-story"><span>STYLE NOTE / 04</span><b>DAILY<br><i>MOMENT</i></b></div>
+        <div class="card-content">
+          <div class="card-meta"><span>日常限動</span><small>適合：限時動態</small></div>
+          <h3>讓顧客參與你的日常</h3>
+          <p>用簡單提問開啟互動，讓限動不只是單向分享。</p>
+          <div class="sample-copy">今天想幫頭髮換點新變化嗎？如果要選一個，你最想先改變哪裡？<br>① 髮色　② 長度　③ 蓬鬆度　④ 髮質</div>
+          <p class="edit-hint">可搭配投票貼紙、作品照片或設計師工作日常。</p>
+          <button class="copy-button" data-copy="今天想幫頭髮換點新變化嗎？如果要選一個，你最想先改變哪裡？\n① 髮色　② 長度　③ 蓬鬆度　④ 髮質">複製文案 <span>↗</span></button>
+        </div>
+      </article>
+    </div>
   </section>
 
-  <section class="closing" id="about">
+  <section class="content-section care-section" id="care">
+    <div class="section-heading">
+      <div><p class="eyebrow muted">02 / CLIENT RELATIONSHIP</p><h2>我想關心顧客</h2><p>不必每次都從預約開始，真誠而合適的關心，也能延續服務的溫度。</p></div>
+      <span class="section-aside">CARE BEYOND THE SALON</span>
+    </div>
+    <div class="filter-row" role="group" aria-label="顧客關懷情境分類">
+      <button class="care-filter active" data-care-filter="all">全部情境</button>
+      <button class="care-filter" data-care-filter="服務後關心">服務後關心</button>
+      <button class="care-filter" data-care-filter="居家照護">居家照護</button>
+      <button class="care-filter" data-care-filter="回訪邀約">回訪邀約</button>
+      <button class="care-filter" data-care-filter="日常問候">日常問候</button>
+    </div>
+    <div class="care-grid" id="careGrid">
+      <article class="care-card" data-kind="care" data-category="服務後關心" data-search="服務後關心 剪髮 染髮 燙髮 滿意度">
+        <div class="care-card-head"><span class="care-icon">♡</span><span class="care-label">服務後關心</span></div>
+        <h3>剛完成服務後</h3>
+        <p class="care-scene">適合：服務後 1–3 天，關心造型適應狀況</p>
+        <div class="message-copy">嗨～這幾天新造型還習慣嗎？回家自己整理時，有沒有哪個地方想再確認的呢？如果有遇到問題，都可以再跟我說，我很樂意協助你。</div>
+        <p class="edit-hint">依實際服務時間調整問候，不需要每位顧客都使用相同訊息。</p>
+        <button class="copy-button" data-copy="嗨～這幾天新造型還習慣嗎？回家自己整理時，有沒有哪個地方想再確認的呢？如果有遇到問題，都可以再跟我說，我很樂意協助你。">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="居家照護" data-search="居家照護 染髮 護色 髮色 洗髮">
+        <div class="care-card-head"><span class="care-icon">✳</span><span class="care-label">居家照護</span></div>
+        <h3>染髮後的照護提醒</h3>
+        <p class="care-scene">適合：染髮服務後，提供個人化護色提醒</p>
+        <div class="message-copy">嗨～提醒你一下，這段時間可以依照我們當天討論的方式做好居家護色與保養。洗髮時留意水溫，也記得搭配適合自己的洗護產品。如果對照護方式有疑問，隨時都可以問我喔！</div>
+        <p class="edit-hint">請依實際染劑、髮況與設計師當日交代內容調整。</p>
+        <button class="copy-button" data-copy="嗨～提醒你一下，這段時間可以依照我們當天討論的方式做好居家護色與保養。洗髮時留意水溫，也記得搭配適合自己的洗護產品。如果對照護方式有疑問，隨時都可以問我喔！">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="回訪邀約" data-search="回訪邀約 久未回訪 預約 整理 頭髮">
+        <div class="care-card-head"><span class="care-icon">⌁</span><span class="care-label">回訪邀約</span></div>
+        <h3>一段時間沒見面</h3>
+        <p class="care-scene">適合：有服務紀錄、且適合再次聯繫的熟客</p>
+        <div class="message-copy">嗨～最近過得好嗎？想起上次幫你整理頭髮時的造型，想問問最近的長度與整理狀況還順利嗎？如果近期剛好想整理一下，也歡迎再跟我聊聊，不急著安排，先看看你的時間就好。</div>
+        <p class="edit-hint">先關心近況，不要讓訊息只有促銷或催促預約的感覺。</p>
+        <button class="copy-button" data-copy="嗨～最近過得好嗎？想起上次幫你整理頭髮時的造型，想問問最近的長度與整理狀況還順利嗎？如果近期剛好想整理一下，也歡迎再跟我聊聊，不急著安排，先看看你的時間就好。">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="日常問候" data-search="日常問候 生日 節日 天氣 生活">
+        <div class="care-card-head"><span class="care-icon">☼</span><span class="care-label">日常問候</span></div>
+        <h3>不帶銷售目的的問候</h3>
+        <p class="care-scene">適合：節日、生日或自然想到顧客時</p>
+        <div class="message-copy">嗨～最近天氣變化比較大，記得照顧好自己喔！前陣子聊到的事情，後來還順利嗎？路過想到你，就來跟你打聲招呼，祝你這週一切順心。</div>
+        <p class="edit-hint">請選擇與彼此熟悉程度相符的語氣，也尊重顧客回覆意願。</p>
+        <button class="copy-button" data-copy="嗨～最近天氣變化比較大，記得照顧好自己喔！前陣子聊到的事情，後來還順利嗎？路過想到你，就來跟你打聲招呼，祝你這週一切順心。">複製關懷訊息 <span>↗</span></button>
+      </article>
+    </div>
+  </section>
+
+  <section class="inspiration-section" id="inspiration">
+    <div class="inspiration-copy"><p class="eyebrow gold">03 / DAILY INSPIRATION</p><h2>靈感不只來自流行，<br>也來自每一次觀察。</h2><p>從季節、生活與顧客常見需求出發，找出值得分享的小主題。</p></div>
+    <div class="inspiration-list">
+      <a href="#posting"><span>01</span><div><b>季節髮型提案</b><small>換季造型、聚會髮型、日常整理</small></div><em>↗</em></a>
+      <a href="#posting"><span>02</span><div><b>顧客常見問題</b><small>髮色維持、整理技巧、髮況照護</small></div><em>↗</em></a>
+      <a href="#care"><span>03</span><div><b>服務後的小提醒</b><small>依照實際服務，提供個人化照護資訊</small></div><em>↗</em></a>
+    </div>
+  </section>
+
+  <section class="guide-section" id="guide">
+    <p class="eyebrow muted">A LITTLE REMINDER</p>
+    <h2>內容可以參考，關心要真實。</h2>
+    <div class="guide-grid">
+      <div><b>01 / 加入自己的語氣</b><p>複製後請依照你與顧客的熟悉程度調整，不必逐字照貼。</p></div>
+      <div><b>02 / 分享真實作品</b><p>作品照片、服務內容與髮況描述請以實際情況為準，並確認取得顧客同意。</p></div>
+      <div><b>03 / 尊重顧客感受</b><p>關懷訊息以協助為出發點，避免頻繁追問或讓顧客感到壓力。</p></div>
+    </div>
+  </section>
+
+  <section class="closing">
     <p class="eyebrow gold">PAMA · PROFESSIONAL · PASSION · MODERN · ART</p>
-    <h2>讓專業被看見，<br>讓關係持續累積。</h2>
+    <h2>讓專業被看見，<br>讓每一份關心都有溫度。</h2>
     <p>專業・熱情・時尚・藝術</p>
   </section>
 </main>
-<footer><a class="brand" href="#"><span class="brand-symbol">P</span><span class="brand-copy"><b>PAMA</b><small>MARKETING HUB</small></span></a><span>帕瑪造型沙龍 · EST. 1989</span><small>© 2026 PAMA SALON. ALL RIGHTS RESERVED.</small></footer>
-<div class="toast" id="toast" role="status" aria-live="polite">文案已複製</div>
+<footer class="footer">
+  <a class="brand" href="#"><span class="brand-mark">P</span><span class="brand-copy"><b>PAMA</b><small>MARKETING HUB</small></span></a>
+  <span>帕瑪造型沙龍 · EST. 1989</span>
+  <small>DESIGNER'S DAILY ASSISTANT</small>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite">已複製</div>
 <script src="app.js"></script>
 </body>
 </html>
