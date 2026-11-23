@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#375B57">
-  <meta name="description" content="PAMA Marketing Hub｜帕瑪行銷補給站，提供門店社群素材、文案靈感與行銷發布規劃。">
-  <title>PAMA Marketing Hub｜帕瑪行銷補給站</title>
+  <meta name="description" content="PAMA Marketing Hub｜帕瑪設計師日常助手，提供社群發文靈感與顧客關懷話術。">
+  <title>PAMA Marketing Hub｜帕瑪設計師日常助手</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,81 +13,72 @@
 </head>
 <body>
 <header class="header">
-  <a class="brand" href="#"><span class="brand-symbol">P</span><span><b>PAMA</b><small>MARKETING HUB</small></span></a>
-  <nav class="nav"><a href="#library">素材庫</a><a href="#ideas">文案靈感</a><a href="#trends">話題雷達</a><a href="#calendar">發布月曆</a></nav>
-  <a class="admin" href="mailto:marketing@pama.com.tw?subject=PAMA%20Marketing%20Hub%20%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0">管理入口 ↗</a>
+  <a class="brand" href="#" aria-label="PAMA Marketing Hub 首頁"><span class="brand-symbol">P</span><span class="brand-copy"><b>PAMA</b><small>MARKETING HUB</small></span></a>
+  <nav class="nav" aria-label="主要導覽"><a href="#start">使用入口</a><a href="#library">靈感內容</a><a href="#topics">話題與月曆</a></nav>
+  <a class="brand-note" href="#about">PROFESSIONAL · PASSION · MODERN · ART</a>
   <button class="menu" aria-label="開啟選單" aria-expanded="false">☰</button>
 </header>
+
 <main>
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow">PAMA SALON · EST. 1989</p>
-      <h1>今天，想發什麼？</h1>
-      <p class="lead">讓每一次分享，都成為品牌與顧客之間的美好連結。</p>
-      <label class="search"><span>⌕</span><input id="search" type="search" placeholder="搜尋髮型、染燙、護髮、節慶靈感⋯"><kbd>ENTER</kbd></label>
-      <div class="tags"><span>本週推薦</span><span>社群貼文</span><span>限時動態</span><span>節慶企劃</span></div>
+      <p class="eyebrow"><span></span>PAMA SALON · EST. 1989</p>
+      <h1>把每一次分享，<br>變成關係的開始。</h1>
+      <p class="lead">不知道今天發什麼？不確定怎麼關心顧客？<br>從一個情境開始，找到自然、實用的靈感。</p>
+      <a class="hero-jump" href="#start">找到今天需要的幫助 <span>↓</span></a>
     </div>
-    <div class="hero-visual" aria-label="PAMA 品牌視覺">
-      <div class="visual-ring"></div><div class="visual-orb"></div>
-      <p class="visual-overline">THE ART<br>OF HAIR</p><p class="visual-bottom">PROFESSIONAL · PASSION<br>MODERN · ART</p><span class="visual-no">01 / 04</span>
-    </div>
-  </section>
-  <section class="intro">
-    <div><p class="eyebrow muted">YOUR CREATIVE TOOLKIT</p><h2>把靈感，變成日常。</h2></div>
-    <p>從總管理處到每一間門店，讓好內容更容易被看見。<br>選擇素材、複製文案，加入門店資訊，就能開始分享。</p>
-  </section>
-  <section class="quick">
-    <a href="#library"><i>▧</i><span><b>素材下載</b><small>圖片・影片・限動</small></span><em>↗</em></a>
-    <a href="#ideas"><i>✎</i><span><b>文案靈感</b><small>貼文・短句・標籤</small></span><em>↗</em></a>
-    <a href="#trends"><i>⌁</i><span><b>熱門話題</b><small>節日・趨勢・提案</small></span><em>↗</em></a>
-    <a href="#calendar"><i>▦</i><span><b>發布月曆</b><small>規劃・提醒・節奏</small></span><em>↗</em></a>
-  </section>
-  <section class="section pale" id="library">
-    <div class="section-head"><div><p class="eyebrow muted">01 / CONTENT LIBRARY</p><h2>本週推薦素材</h2><p>挑選適合門店的內容，讓社群保持新鮮與質感。</p></div><span class="text-link">CONTENT COLLECTION ↗</span></div>
-    <div class="filters">
-      <button class="active" data-filter="全部">全部</button><button data-filter="髮型作品">髮型作品</button><button data-filter="染燙提案">染燙提案</button><button data-filter="養護推薦">養護推薦</button><button data-filter="節慶企劃">節慶企劃</button>
-    </div>
-    <div class="cards" id="cards">
-      <article class="card" data-cat="髮型作品" data-terms="髮型作品 層次 日常造型">
-        <div class="art art-one"><span class="badge">本週精選</span><span class="art-num">01</span><strong>EFFORTLESS<br><i>BEAUTY</i></strong></div>
-        <div class="card-body"><div class="meta"><span>髮型作品</span><small>貼文・限動</small></div><h3>日常，也值得好好造型</h3><p>以自然層次與柔和線條，呈現輕盈又有個性的日常髮型。</p><button class="copy" data-copy="每一天，都值得為自己整理出喜歡的模樣。從適合自己的剪裁開始，讓日常多一點自在與自信。\n\n#PAMA帕瑪造型沙龍 #髮型提案">複製文案 ↗</button></div>
-      </article>
-      <article class="card" data-cat="染燙提案" data-terms="染燙提案 髮色 質感">
-        <div class="art art-two"><span class="badge">風格提案</span><span class="art-num">02</span><strong>A NEW<br><i>SHADE</i></strong></div>
-        <div class="card-body"><div class="meta"><span>染燙提案</span><small>貼文・限動</small></div><h3>換個髮色，遇見新的自己</h3><p>用適合膚色與生活風格的色彩，打造專屬於你的質感印象。</p><button class="copy" data-copy="想換個心情，不妨從髮色開始。依照膚色、髮況與日常風格，找到真正適合自己的色彩。\n\n#PAMA帕瑪造型沙龍 #染髮提案">複製文案 ↗</button></div>
-      </article>
-      <article class="card" data-cat="養護推薦" data-terms="養護推薦 護髮 頭皮 髮絲">
-        <div class="art art-three"><span class="badge">日常照護</span><span class="art-num">03</span><strong>CARE<br><i>MATTERS</i></strong></div>
-        <div class="card-body"><div class="meta"><span>養護推薦</span><small>貼文・限動</small></div><h3>讓髮絲，回到喜歡的狀態</h3><p>從日常清潔到深層養護，為不同髮況找到合適的照護方式。</p><button class="copy" data-copy="漂亮的髮型，也需要日常照護一起成就。了解自己的髮況，選擇適合的清潔與養護方式，讓柔順與光澤成為日常。\n\n#PAMA帕瑪造型沙龍 #髮絲養護">複製文案 ↗</button></div>
-      </article>
-    </div>
-    <p class="empty" id="empty" hidden>目前沒有符合條件的素材，試試其他關鍵字。</p>
-  </section>
-  <section class="feature" id="ideas">
-    <div><p class="eyebrow gold">02 / COPYWRITING NOTES</p><h2>好的文案，<br>從一句話開始。</h2><p>不必每次從零開始。挑選一段適合的文字，加入門店作品與資訊，讓分享更簡單。</p></div>
-    <div class="quote"><span>“</span><blockquote>風格不只是外在的選擇，<br>更是你認識自己的方式。</blockquote><small>PAMA · STYLE IS PERSONAL</small><button class="copy" data-copy="風格不只是外在的選擇，更是你認識自己的方式。找到適合自己的樣子，讓每一次改變，都更靠近理想中的自己。">複製這段文字 ↗</button></div>
-  </section>
-  <section class="section" id="trends">
-    <div class="section-head"><div><p class="eyebrow muted">03 / TREND RADAR</p><h2>話題靈感雷達</h2><p>把節日、生活觀察與美感趨勢，轉化成門店可以分享的內容。</p></div><span class="status">持續更新中</span></div>
-    <div class="trend-grid">
-      <article><small>SEASONAL IDEA / 01</small><h3>年末聚會造型提案</h3><p>從聚餐、派對到重要場合，分享不同情境的髮型靈感。</p><a href="#calendar">搭配發布規劃 ↗</a></article>
-      <article><small>CARE ROUTINE / 02</small><h3>換季髮絲照護</h3><p>用簡單易懂的日常知識，提醒顧客留意季節與髮況變化。</p><a href="#calendar">搭配發布規劃 ↗</a></article>
-      <article><small>STYLE INSPIRATION / 03</small><h3>本月風格觀察</h3><p>以髮型作品與設計師觀點，分享值得收藏的造型方向。</p><a href="#calendar">搭配發布規劃 ↗</a></article>
+    <div class="hero-art" aria-label="PAMA 品牌形象視覺">
+      <div class="hero-art-ring"></div><div class="hero-art-shape"></div>
+      <p class="hero-art-title">THE ART<br>OF CONNECTION</p>
+      <p class="hero-art-foot">GOOD HAIR. GOOD CARE.<br>GOOD CONNECTION.</p>
+      <span class="hero-art-index">01 / PAMA</span>
     </div>
   </section>
-  <section class="calendar" id="calendar">
-    <div class="section-head"><div><p class="eyebrow muted">04 / MARKETING CALENDAR</p><h2>行銷發布月曆</h2><p>先安排主題，再挑選素材，讓門店內容發布更有節奏。</p></div><span class="month">DECEMBER 2026</span></div>
-    <div class="events">
-      <div><time>12.01<small>TUE</small></time><i></i><span><b>年末造型提案</b><small>髮型作品 / 聚會造型 / 預約提醒</small></span><em>造型靈感</em></div>
-      <div><time>12.10<small>THU</small></time><i></i><span><b>冬季髮絲養護</b><small>居家照護 / 護髮知識 / 設計師分享</small></span><em>養護知識</em></div>
-      <div><time>12.18<small>FRI</small></time><i></i><span><b>節慶聚會造型</b><small>染燙提案 / 風格作品 / 預約引導</small></span><em>節慶企劃</em></div>
-      <div><time>12.28<small>MON</small></time><i></i><span><b>迎接新年的自己</b><small>年度回顧 / 新年造型 / 預約提醒</small></span><em>品牌內容</em></div>
+
+  <section class="start-section" id="start">
+    <div class="section-kicker"><span>START HERE</span><i></i><span>從你的需求開始</span></div>
+    <div class="section-title"><h2>今天，想做哪一件事？</h2><p>選擇你現在需要的情境，快速找到可參考的內容。</p></div>
+    <div class="entry-grid">
+      <button class="entry-card entry-post" data-mode="post">
+        <span class="entry-number">01</span><span class="entry-icon">✳</span>
+        <span class="entry-content"><b>我要發文</b><small>作品分享・髮型知識・日常靈感</small><em>找發文靈感 <span>↗</span></em></span>
+      </button>
+      <button class="entry-card entry-care" data-mode="care">
+        <span class="entry-number">02</span><span class="entry-icon">♡</span>
+        <span class="entry-content"><b>我要關心顧客</b><small>術後關心・居家照護・回訪邀約</small><em>找關懷話術 <span>↗</span></em></span>
+      </button>
     </div>
-    <p class="note">以上為示範排程，正式活動與發布日期以總管理處公告為準。</p>
   </section>
-  <section class="closing"><p class="eyebrow gold">PROFESSIONAL · PASSION · MODERN · ART</p><h2>讓好的創意，<br>在每一間門店發生。</h2><p>專業・熱情・時尚・藝術</p></section>
+
+  <section class="library-section" id="library">
+    <div class="library-head">
+      <div><p class="eyebrow muted">DESIGNER'S TOOLKIT</p><h2 id="libraryTitle">挑一個情境，開始找靈感。</h2><p id="libraryIntro">所有內容都可以依照自己的說話習慣調整，再分享給顧客。</p></div>
+      <div class="mode-switch" role="group" aria-label="選擇內容類型"><button class="mode-button active" data-mode="post">我要發文</button><button class="mode-button" data-mode="care">我要關心顧客</button></div>
+    </div>
+    <div class="search-row"><label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="搜尋情境，例如：染髮後、作品分享、久未回訪⋯" aria-label="搜尋情境與文案"><kbd>SEARCH</kbd></label><span class="search-hint">選擇下方分類，或直接搜尋關鍵字</span></div>
+    <div class="filters" id="filters" aria-label="內容分類"></div>
+    <div class="content-grid" id="contentGrid"></div>
+    <p class="empty" id="empty" hidden>目前沒有符合的內容，試試其他關鍵字或分類。</p>
+    <p class="usage-note"><span>✦</span> 內容是溝通靈感，不是制式話術。請依顧客實際服務、髮況與互動關係調整。</p>
+  </section>
+
+  <section class="topics-section" id="topics">
+    <div class="section-title"><p class="eyebrow muted">IDEAS TO KEEP CLOSE</p><h2>靈感，也可以隨時補充。</h2><p>當你想找新的分享方向，可以從這些主題開始。</p></div>
+    <div class="topic-grid">
+      <article class="topic-card"><span>01 / CONTENT IDEA</span><h3>季節髮型提案</h3><p>換季、旅行、聚會與不同生活場合的造型分享。</p><a href="#library" data-topic-search="季節">尋找相關靈感 ↗</a></article>
+      <article class="topic-card"><span>02 / HAIR CARE</span><h3>日常髮絲照護</h3><p>整理技巧、洗護習慣與依個人髮況給予的照護提醒。</p><a href="#library" data-topic-search="照護">尋找相關靈感 ↗</a></article>
+      <article class="topic-card"><span>03 / CUSTOMER CARE</span><h3>讓關心持續發生</h3><p>從服務後的問候，到平常自然的互動與回訪邀約。</p><a href="#library" data-topic-mode="care">查看關懷話術 ↗</a></article>
+    </div>
+    <div class="calendar-strip"><div><p class="eyebrow muted">MONTHLY REMINDER</p><b>別忘了替自己的內容安排一點節奏。</b><small>可以依門店活動、節慶與作品更新，安排每週分享主題。</small></div><a href="https://github.com/pamahairsalon/pama-marketing-hub" target="_blank" rel="noopener">查看平台內容更新 ↗</a></div>
+  </section>
+
+  <section class="closing" id="about">
+    <p class="eyebrow gold">PAMA · PROFESSIONAL · PASSION · MODERN · ART</p>
+    <h2>讓專業被看見，<br>讓關係持續累積。</h2>
+    <p>專業・熱情・時尚・藝術</p>
+  </section>
 </main>
-<footer><a class="brand" href="#"><span class="brand-symbol">P</span><span><b>PAMA</b><small>MARKETING HUB</small></span></a><span>帕瑪造型沙龍 · EST. 1989</span><small>© 2026 PAMA SALON. ALL RIGHTS RESERVED.</small></footer>
+<footer><a class="brand" href="#"><span class="brand-symbol">P</span><span class="brand-copy"><b>PAMA</b><small>MARKETING HUB</small></span></a><span>帕瑪造型沙龍 · EST. 1989</span><small>© 2026 PAMA SALON. ALL RIGHTS RESERVED.</small></footer>
 <div class="toast" id="toast" role="status" aria-live="polite">文案已複製</div>
 <script src="app.js"></script>
 </body>
