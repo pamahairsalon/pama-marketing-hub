@@ -1,5 +1,6 @@
 const searchInput = document.querySelector("#contentSearch");
 const contentCards = [...document.querySelectorAll(".content-card, .care-card")];
+const trendCards = [...document.querySelectorAll(".trend-topic")];
 const postFilters = [...document.querySelectorAll("[data-filter]")];
 const careFilters = [...document.querySelectorAll("[data-care-filter]")];
 
@@ -17,12 +18,16 @@ function filterContent() {
     const queryMatch = !query || (card.dataset.search + " " + card.innerText).toLocaleLowerCase().includes(query);
     card.hidden = !(categoryMatch && queryMatch);
   });
+  trendCards.forEach(card => {
+    const queryMatch = !query || card.innerText.toLocaleLowerCase().includes(query);
+    card.hidden = !queryMatch;
+  });
 }
 
 searchInput?.addEventListener("input", filterContent);
 searchInput?.addEventListener("keydown", event => {
   if (event.key === "Enter") {
-    const firstVisible = contentCards.find(card => !card.hidden);
+    const firstVisible = [...contentCards, ...trendCards].find(card => !card.hidden);
     firstVisible?.scrollIntoView({behavior:"smooth", block:"center"});
   }
 });
