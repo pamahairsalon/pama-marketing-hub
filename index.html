@@ -188,10 +188,10 @@
   </div>
   <div class="toolkit-cards">
     <article class="tool-link-card pama-gpt-card">
-      <div class="tool-card-top"><span class="tool-card-index">TOOL / 01 · AI ASSISTANT</span><span class="tool-symbol">✳</span></div>
-      <div><span class="tool-label">PAMA PRIVATE AI ASSISTANT</span><h3>帕瑪小助手</h3><p>品牌專屬 AI 助手，協助設計師發想貼文、整理圖文內容、撰寫顧客關懷訊息。限帕瑪內部夥伴使用。</p></div>
-      <span class="tool-card-link tool-card-link-disabled" aria-disabled="true">內部使用權限設定中</span>
-      <small class="tool-disclaimer">需加入帕瑪指定 ChatGPT 工作區並取得邀請權限；完成設定後開放使用</small>
+      <div class="tool-card-top"><span class="tool-card-index">TOOL / 01 · FREE AI WORKFLOW</span><span class="tool-symbol">✳</span></div>
+      <div><span class="tool-label">PAMA PROMPT HELPER</span><h3>帕瑪 AI 指令小助手</h3><p>不用安裝外掛、不用購買公司席位。選擇工作情境、填入簡單資訊，就能產生適合帕瑪使用的 AI 指令。</p></div>
+      <a href="#pama-prompt-helper" class="tool-card-link">免費開始使用 <span>↓</span></a>
+      <small class="tool-disclaimer">使用自己的免費 ChatGPT 帳號・複製指令即可開始</small>
     </article>
     <article class="tool-link-card graphic-tool-card">
       <div class="tool-card-top"><span class="tool-card-index">TOOL / 02 · QUICK LAYOUT</span><span class="tool-symbol">▧</span></div>
@@ -206,15 +206,33 @@
       <small class="tool-disclaimer">目前提供的網址頁面名稱為「生活小幫手」，休假表功能待確認</small>
     </article>
   </div>
-  <div class="gpt-howto">
-    <div class="gpt-howto-title"><span>HOW TO USE / 使用方式</span><b>第一次使用帕瑪小助手？</b></div>
-    <div class="gpt-howto-steps">
-      <div><i>01</i><b>加入帕瑪工作區</b><span>使用自己的 ChatGPT 帳號接受總管理處邀請。</span></div>
-      <div><i>02</i><b>取得助手權限</b><span>由總管理處將帕瑪小助手分享給指定夥伴。</span></div>
-      <div><i>03</i><b>安裝外掛程式</b><span>依照邀請連結，在自己的 ChatGPT 帳號安裝。</span></div>
-      <div><i>04</i><b>直接說需求</b><span>例如：幫我寫一篇作品分享貼文，語氣自然、有質感。</span></div>
+  <div class="pama-prompt-helper" id="pama-prompt-helper">
+    <div class="prompt-helper-heading">
+      <div><p class="eyebrow muted">PAMA AI PROMPT HELPER / FREE</p><h3>把工作需求，變成好用的 AI 指令。</h3><p>選擇情境、填入重點，複製指令到 ChatGPT，就能開始製作。不需要安裝任何外掛。</p></div>
+      <span class="beta-tag">免費使用</span>
     </div>
-    <p>小提醒：帕瑪小助手採內部邀請制，不會公開上架。設計師需使用自己的 ChatGPT 帳號加入帕瑪指定工作區，並取得使用權限；請勿共用他人的 ChatGPT 帳號。<br><br><strong>服務異動提醒：</strong>OpenAI 目前公告自訂 GPT 預計於 2026/12/11 退場，實際日期仍以建立帳號／工作區公告為準。遷移後的替代外掛程式預設為私人，原本使用者不會自動取得權限；總管理處需另行安排分享與測試。<br><a href="https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq" target="_blank" rel="noopener noreferrer">查看 OpenAI 官方遷移說明 ↗</a></p>
+    <div class="prompt-helper-layout">
+      <div class="prompt-helper-form">
+        <label class="tool-field"><span>今天想完成什麼？</span>
+          <select id="pamaPromptTask">
+            <option value="work">髮型作品分享貼文</option><option value="story">Instagram 限時動態</option><option value="reels">Reels 短影音腳本</option><option value="knowledge">髮型／造型知識內容</option><option value="care">服務後顧客關心</option><option value="revisit">熟客回訪邀約</option><option value="reply">顧客訊息回覆</option><option value="campaign">活動／節慶宣傳</option>
+          </select>
+        </label>
+        <label class="tool-field"><span>作品或服務資訊（選填）</span><input id="pamaPromptService" maxlength="100" placeholder="例如：女生鎖骨剪、奶茶霧棕、縮毛矯正"></label>
+        <label class="tool-field"><span>希望呈現的重點（選填）</span><textarea id="pamaPromptDetails" rows="3" maxlength="300" placeholder="例如：自然蓬鬆、修飾臉型、好整理；客人希望低調有質感。"></textarea></label>
+        <label class="tool-field"><span>發布平台</span><select id="pamaPromptPlatform"><option>Instagram 貼文</option><option>Instagram 限時動態</option><option>Instagram Reels</option><option>LINE 訊息</option><option>Facebook 貼文</option><option>私訊／一對一顧客溝通</option></select></label>
+        <label class="tool-field"><span>文字風格</span><select id="pamaPromptTone"><option>自然、有質感、像朋友提醒，不浮誇也不強迫推銷</option><option>專業清楚、親切有溫度</option><option>簡短俐落、適合限時動態</option><option>時尚雜誌感、有美感與故事性</option></select></label>
+        <label class="tool-field"><span>其他補充（選填）</span><textarea id="pamaPromptExtra" rows="2" maxlength="200" placeholder="例如：希望有預約引導、不要太多 Hashtag。"></textarea></label>
+        <p class="tool-form-note">請勿填寫顧客姓名、電話、LINE ID、地址、健康資料或其他可識別個人的資訊；提供作品照片前請先取得顧客同意。</p>
+        <div class="prompt-helper-actions"><button type="button" class="graphic-download" id="pamaPromptGenerate">產生專屬指令 <span>✳</span></button><button type="button" class="graphic-copy" id="pamaPromptReset">清除重填</button></div>
+      </div>
+      <div class="prompt-result-panel">
+        <div class="preview-heading"><span>你的帕瑪 AI 指令</span><small>可先自行修改</small></div>
+        <textarea id="pamaPromptResult" rows="17" placeholder="填好左側內容後，按「產生專屬指令」，指令會顯示在這裡。"></textarea>
+        <div class="prompt-result-actions"><button type="button" class="graphic-download" id="pamaPromptCopy">複製指令 <span>▣</span></button><a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" class="graphic-copy prompt-chatgpt-link">開啟免費 ChatGPT ↗</a></div>
+        <p class="preview-note">使用方式：先複製左側產生的指令，再開啟 ChatGPT，貼上並送出。可繼續補充照片或細節，直到完成內容。</p>
+      </div>
+    </div>
   </div>
 
   <div class="graphic-maker" id="graphic-maker">
