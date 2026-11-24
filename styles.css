@@ -196,3 +196,28 @@ body{font-size:16px;line-height:1.75}
   .guide-grid p{font-size:14px}
   .footer>span,.footer>small{font-size:12px}
 }
+
+
+/* Weixin AI advisor directory */
+.advisor-section{padding:56px 28px 42px;margin:30px 0 34px;background:#f3f5f0;border:1px solid #e4e9e0}
+.advisor-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:22px;margin-bottom:24px}
+.advisor-heading h3{font:500 25px var(--serif);letter-spacing:1px;color:var(--green);margin:0}
+.advisor-heading>div>p:last-child{font-size:15px;line-height:1.9;color:#78847b;margin:11px 0 0;max-width:680px}
+.advisor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.advisor-card{display:flex;flex-direction:column;align-items:flex-start;min-width:0;min-height:330px;padding:22px 21px;background:#fff;border:1px solid #e3e8e0;border-top:3px solid #9eaa9c}
+.advisor-focus{border-top-color:#b79d63}
+.advisor-management{border-top-color:#8190b4}
+.advisor-action{border-top-color:#829b8e}
+.advisor-top{display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:20px}
+.advisor-number{font-size:11px;letter-spacing:1.6px;color:#9aa39a}
+.advisor-icon{display:grid;place-items:center;width:36px;height:36px;border:1px solid #e4e7df;border-radius:50%;font-size:19px;color:var(--green)}
+.advisor-category{font-size:11px;letter-spacing:1.2px;color:#a28a4b;margin:0 0 9px}
+.advisor-card h4{font:500 23px var(--serif);color:var(--green);margin:0 0 5px}
+.advisor-role{font-size:14px;line-height:1.65;color:#65736a;margin:0 0 13px}
+.advisor-description{font-size:14px;line-height:1.95;color:#59665e;margin:0 0 20px}
+.advisor-link{display:inline-flex;align-items:center;gap:18px;margin-top:auto;padding:11px 0 7px;border-bottom:1px solid var(--gold);font-size:14px;color:var(--green)}
+.advisor-link span{font-size:16px}
+.advisor-link:hover{color:#9b7b31}
+.advisor-note{font-size:12px;line-height:1.8;color:#8c968e;margin:16px 0 0}
+@media(max-width:900px){.advisor-grid{grid-template-columns:1fr 1fr}.advisor-card:last-child{grid-column:1/-1;min-height:0}}
+@media(max-width:650px){.advisor-section{padding:24px 14px;margin:22px 0 26px}.advisor-heading{display:block}.advisor-heading h3{font-size:23px}.advisor-heading>div>p:last-child{font-size:14px}.advisor-heading .toolkit-aside{display:block;margin-top:12px}.advisor-grid{grid-template-columns:1fr;gap:12px}.advisor-card,.advisor-card:last-child{grid-column:auto;min-height:0;padding:19px}.advisor-card h4{font-size:22px}.advisor-role,.advisor-description,.advisor-link{font-size:14px}.advisor-note{font-size:12px}}
