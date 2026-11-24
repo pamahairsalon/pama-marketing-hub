@@ -76,8 +76,8 @@
     </div>
     <p class="posting-guide">依照今天想分享的內容選擇分類。每個範例都可以先複製，再補上實際作品特色、顧客需求與你的個人語氣。</p>
     <div class="filter-row" role="group" aria-label="發文內容分類">
-      <button class="filter-button active" data-filter="all">全部內容</button>
-      <button class="filter-button" data-filter="作品分享">作品分享</button>
+      <button class="filter-button" data-filter="all">全部內容</button>
+      <button class="filter-button active" data-filter="作品分享">作品分享</button>
       <button class="filter-button" data-filter="髮型知識">髮型知識</button>
       <button class="filter-button" data-filter="養護分享">養護分享</button>
       <button class="filter-button" data-filter="顧客故事">顧客故事</button>
@@ -260,11 +260,14 @@
       <div><p class="eyebrow muted">02 / CLIENT RELATIONSHIP</p><h2>我想關心顧客</h2><p>不必每次都從預約開始，真誠而合適的關心，也能延續服務的溫度。</p></div>
       <span class="section-aside">CARE BEYOND THE SALON</span>
     </div>
+    <p class="care-guide">先選擇顧客目前的情境，再展開話術範例。每則訊息都可以依照你和顧客的熟悉程度調整，不需要制式照貼。</p>
     <div class="filter-row" role="group" aria-label="顧客關懷情境分類">
-      <button class="care-filter active" data-care-filter="all">全部情境</button>
-      <button class="care-filter" data-care-filter="服務後關心">服務後關心</button>
+      <button class="care-filter" data-care-filter="all">全部情境</button>
+      <button class="care-filter active" data-care-filter="服務後關心">服務後關心</button>
       <button class="care-filter" data-care-filter="居家照護">居家照護</button>
       <button class="care-filter" data-care-filter="回訪邀約">回訪邀約</button>
+      <button class="care-filter" data-care-filter="預約前提醒">預約前提醒</button>
+      <button class="care-filter" data-care-filter="問題協助">問題協助</button>
       <button class="care-filter" data-care-filter="日常問候">日常問候</button>
     </div>
     <div class="care-grid" id="careGrid">
@@ -296,7 +299,79 @@
         <div class="care-card-head"><span class="care-icon">☼</span><span class="care-label">日常問候</span></div>
         <h3>不帶銷售目的的問候</h3>
         <p class="care-scene">適合：節日、生日或自然想到顧客時</p>
-        <div class="message-copy">嗨～最近天氣變化比較大，記得照顧好自己喔！前陣子聊到的事情，後來還順利嗎？路過想到你，就來跟你打聲招呼，祝你這週一切順心。</div>
+        <div class="message-copy">嗨～最近天氣變化比較大，記得照顧好自己喔！前陣子聊到的事情，後來還順利嗎？路過想到你，就來跟你打聲招呼，祝你這週一切順心。      <article class="care-card" data-kind="care" data-category="服務後關心" data-search="服務後關心 剪髮 層次 瀏海 髮型整理">
+        <div class="care-card-head"><span class="care-icon">✂</span><span class="care-label">服務後關心</span></div>
+        <h3>剪髮後的整理狀況</h3>
+        <p class="care-scene">適合：剪髮後幾天，關心顧客是否好整理</p>
+        <div class="message-copy">嗨～這幾天自己整理新剪的髮型還習慣嗎？早上吹整時，長度、瀏海或層次有沒有哪裡不太順手？如果有遇到問題可以跟我說，我再陪你一起看看怎麼整理會更適合。</div>
+        <p class="edit-hint">依顧客實際剪裁內容，挑選長度、瀏海或層次等適合的關心重點。</p>
+        <button class="copy-button" data-copy="嗨～這幾天自己整理新剪的髮型還習慣嗎？早上吹整時，長度、瀏海或層次有沒有哪裡不太順手？如果有遇到問題可以跟我說，我再陪你一起看看怎麼整理會更適合。">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="服務後關心" data-search="服務後關心 護髮 深層護理 髮質 感受">
+        <div class="care-card-head"><span class="care-icon">♡</span><span class="care-label">服務後關心</span></div>
+        <h3>護髮服務後的感受</h3>
+        <p class="care-scene">適合：護髮或深層養護後，關心居家感受</p>
+        <div class="message-copy">嗨～想關心一下，這次做完護髮後，回家自己洗護和吹整時，髮絲的觸感還喜歡嗎？如果最近有感覺到哪裡不太一樣，也歡迎跟我分享，我可以再依照你的日常習慣給你一些照護建議。</div>
+        <p class="edit-hint">避免保證效果或固定維持時間，聚焦顧客實際感受。</p>
+        <button class="copy-button" data-copy="嗨～想關心一下，這次做完護髮後，回家自己洗護和吹整時，髮絲的觸感還喜歡嗎？如果最近有感覺到哪裡不太一樣，也歡迎跟我分享，我可以再依照你的日常習慣給你一些照護建議。">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="居家照護" data-search="居家照護 燙髮 捲度 造型 慕斯 烘罩">
+        <div class="care-card-head"><span class="care-icon">✳</span><span class="care-label">居家照護</span></div>
+        <h3>燙髮後的捲度整理</h3>
+        <p class="care-scene">適合：燙髮後，補充捲度整理方式</p>
+        <div class="message-copy">嗨～最近自己整理捲度還順手嗎？記得依照我們當天示範的方式，先把頭髮吹到適合的濕度，再搭配適合的造型產品整理。如果有哪個步驟不太確定，也可以再問我，我可以幫你把步驟說得更清楚。</div>
+        <p class="edit-hint">請依實際燙髮方式與設計師現場教學內容調整。</p>
+        <button class="copy-button" data-copy="嗨～最近自己整理捲度還順手嗎？記得依照我們當天示範的方式，先把頭髮吹到適合的濕度，再搭配適合的造型產品整理。如果有哪個步驟不太確定，也可以再問我，我可以幫你把步驟說得更清楚。">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="居家照護" data-search="居家照護 洗髮 吹整 髮質 毛躁 打結">
+        <div class="care-card-head"><span class="care-icon">☼</span><span class="care-label">居家照護</span></div>
+        <h3>日常洗護與吹整提醒</h3>
+        <p class="care-scene">適合：顧客想改善日常整理習慣時</p>
+        <div class="message-copy">最近如果覺得頭髮比較容易打結或毛躁，可以先留意洗髮後的擦乾方式和吹整習慣。先用毛巾輕壓吸水，再依照髮流分區吹乾，吹整前也記得做好適合的防護。若你願意，下次來店時我們也可以一起檢視目前的整理方式。</div>
+        <p class="edit-hint">照護建議需依髮質、髮況與顧客使用習慣調整。</p>
+        <button class="copy-button" data-copy="最近如果覺得頭髮比較容易打結或毛躁，可以先留意洗髮後的擦乾方式和吹整習慣。先用毛巾輕壓吸水，再依照髮流分區吹乾，吹整前也記得做好適合的防護。若你願意，下次來店時我們也可以一起檢視目前的整理方式。">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="居家照護" data-search="居家照護 換季 天氣 乾燥 頭皮 髮尾">
+        <div class="care-card-head"><span class="care-icon">☁</span><span class="care-label">居家照護</span></div>
+        <h3>換季時的髮況提醒</h3>
+        <p class="care-scene">適合：季節轉換、天氣乾燥或濕度變化時</p>
+        <div class="message-copy">最近天氣開始有些變化，頭皮和髮絲的感受也可能跟著不同。這陣子可以多留意頭皮清潔、髮尾保濕和吹整後的狀態，不需要一次改變很多習慣，先從自己最在意的地方開始就好。有需要也可以再和我討論。</div>
+        <p class="edit-hint">避免把季節提醒寫成產品推銷，依當下天氣與顧客髮況調整。</p>
+        <button class="copy-button" data-copy="最近天氣開始有些變化，頭皮和髮絲的感受也可能跟著不同。這陣子可以多留意頭皮清潔、髮尾保濕和吹整後的狀態，不需要一次改變很多習慣，先從自己最在意的地方開始就好。有需要也可以再和我討論。">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="回訪邀約" data-search="回訪邀約 染髮 補染 修剪 燙髮 整理週期">
+        <div class="care-card-head"><span class="care-icon">⌁</span><span class="care-label">回訪邀約</span></div>
+        <h3>曾討論過的造型後續</h3>
+        <p class="care-scene">適合：之前聊過需求，但當時尚未安排服務</p>
+        <div class="message-copy">嗨～之前我們有聊到你想嘗試＿＿＿＿，不知道最近還有沒有想法呢？如果目前還在考慮也沒關係，想先了解效果、整理方式或適不適合自己的話，都可以再傳訊息給我，我可以陪你一起評估。</div>
+        <p class="edit-hint">承接之前真實聊過的內容，不要假設顧客一定要消費或預約。</p>
+        <button class="copy-button" data-copy="嗨～之前我們有聊到你想嘗試＿＿＿＿，不知道最近還有沒有想法呢？如果目前還在考慮也沒關係，想先了解效果、整理方式或適不適合自己的話，都可以再傳訊息給我，我可以陪你一起評估。">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="預約前提醒" data-search="預約前提醒 預約 時間 日期 確認 行程">
+        <div class="care-card-head"><span class="care-icon">◷</span><span class="care-label">預約前提醒</span></div>
+        <h3>預約前的貼心確認</h3>
+        <p class="care-scene">適合：已經約好日期與時間的顧客</p>
+        <div class="message-copy">嗨～提醒你一下，我們約好的服務時間是＿＿月＿＿日（＿＿）＿＿點，當天會幫你安排＿＿＿＿。若行程有變動，記得提前跟我說一聲，我們再一起確認適合的時間。期待見到你！</div>
+        <p class="edit-hint">發送前務必核對預約日期、時間、服務項目及門市資訊。</p>
+        <button class="copy-button" data-copy="嗨～提醒你一下，我們約好的服務時間是＿＿月＿＿日（＿＿）＿＿點，當天會幫你安排＿＿＿＿。若行程有變動，記得提前跟我說一聲，我們再一起確認適合的時間。期待見到你！">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="問題協助" data-search="問題協助 不習慣 整理方式 髮型 不滿意 售後">
+        <div class="care-card-head"><span class="care-icon">♡</span><span class="care-label">問題協助</span></div>
+        <h3>顧客表示不習慣或有疑問</h3>
+        <p class="care-scene">適合：顧客反映造型、整理或服務上有困擾</p>
+        <div class="message-copy">謝謝你願意跟我說，我也希望這次的造型能讓你感到自在。可以再跟我分享一下，主要是哪個地方和原本想像的不太一樣嗎？我想先了解實際狀況，再一起看看有沒有適合的調整方式。</div>
+        <p class="edit-hint">先聆聽並釐清問題，不急著辯解或承諾尚未確認的處理方式。</p>
+        <button class="copy-button" data-copy="謝謝你願意跟我說，我也希望這次的造型能讓你感到自在。可以再跟我分享一下，主要是哪個地方和原本想像的不太一樣嗎？我想先了解實際狀況，再一起看看有沒有適合的調整方式。">複製關懷訊息 <span>↗</span></button>
+      </article>
+      <article class="care-card" data-kind="care" data-category="日常問候" data-search="日常問候 生日 祝福 生日卡片 顧客祝福">
+        <div class="care-card-head"><span class="care-icon">✧</span><span class="care-label">日常問候</span></div>
+        <h3>生日當天的專屬祝福</h3>
+        <p class="care-scene">適合：已知顧客生日且平時有互動的熟客</p>
+        <div class="message-copy">生日快樂！🎂 希望新的一歲有更多值得期待的小事，也有時間好好照顧自己、做喜歡的事。謝謝你一直以來的信任，祝你今天被滿滿的幸福和好心情包圍！</div>
+        <p class="edit-hint">先確認生日資訊正確，依顧客熟悉程度調整稱呼與祝福語氣。</p>
+        <button class="copy-button" data-copy="生日快樂！🎂 希望新的一歲有更多值得期待的小事，也有時間好好照顧自己、做喜歡的事。謝謝你一直以來的信任，祝你今天被滿滿的幸福和好心情包圍！">複製關懷訊息 <span>↗</span></button>
+      </article>
+</div>
         <p class="edit-hint">請選擇與彼此熟悉程度相符的語氣，也尊重顧客回覆意願。</p>
         <button class="copy-button" data-copy="嗨～最近天氣變化比較大，記得照顧好自己喔！前陣子聊到的事情，後來還順利嗎？路過想到你，就來跟你打聲招呼，祝你這週一切順心。">複製關懷訊息 <span>↗</span></button>
       </article>
