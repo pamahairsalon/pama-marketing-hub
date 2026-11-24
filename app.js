@@ -9,52 +9,6 @@ const careGrid = document.querySelector("#careGrid");
 let postCategory = "作品分享";
 let careCategory = "服務後關心";
 
-function cardsFor(kind) {
-  return [...contentCards].filter(card => card.dataset.kind === kind);
-}
-
-function matchingCardsFor(kind) {
-  const category = kind === "post" ? postCategory : careCategory;
-  const query = (searchInput?.value || "").trim().toLocaleLowerCase();
-  return cardsFor(kind).filter(card => {
-    const categoryMatch = category === "all" || card.dataset.category === category;
-    const searchMatch = !query || (card.dataset.search + " " + card.innerText).toLocaleLowerCase().includes(query);
-    return categoryMatch && searchMatch;
-  });
-}
-
-function updateSwipePosition(kind) {
-  const isPost = kind === "post";
-  const grid = isPost ? postGrid : careGrid;
-  const position = document.querySelector(isPost ? "#postSwipePosition" : "#careSwipePosition");
-  const countLabel = document.querySelector(isPost ? "#postResultCount" : "#careResultCount");
-  if (!grid) return;
-
-  const cards = matchingCardsFor(kind);
-  if (cards.length === 0) {
-    if (position) position.textContent = "目前沒有內容";
-    if (countLabel) countLabel.textContent = "沒有符合的內容，請更換分類或搜尋關鍵字。";
-    return;
-  }
-
-  const gridRect = grid.getBoundingClientRect();
-  const center = gridRect.left + gridRect.width / 2;
-  let currentIndex = 0;
-  let nearestDistance = Infinity;
-  cards.forEach((card, index) => {
-    const rect = card.getBoundingClientRect();
-    const cardCenter = rect.left + rect.width / 2;
-    const distance = Math.abs(cardCenter - center);
-    if (distance < nearestDistance) {
-      nearestDistance = distance;
-      currentIndex = index;
-    }
-  });
-
-  if (position) position.textContent = `第 ${currentIndex + 1} / ${cards.length} 則`;
-  if (countLabel) countLabel.textContent = `此分類共有 ${cards.length} 則參考`;
-}
-
 function filterContent(resetScroll = true) {
   const query = (searchInput?.value || "").trim().toLocaleLowerCase();
 
@@ -72,54 +26,26 @@ function filterContent(resetScroll = true) {
     card.hidden = !query || !card.innerText.toLocaleLowerCase().includes(query);
   });
 
-  if (resetScroll) {
-    if (postGrid) postGrid.scrollTo({left:0, behavior:"auto"});
-    if (careGrid) careGrid.scrollTo({left:0, behavior:"auto"});
+  const postCount = contentCards.filter(card => card.dataset.kind === "post" && !card.hidden).length;
+  const careCount = contentCards.filter(card => card.dataset.kind === "care" && !card.hidden).length;
+  const postCountLabel = document.querySelector("#postResultCount");
+  const careCountLabel = document.querySelector("#careResultCount");
+
+  if (postCountLabel) {
+    postCountLabel.textContent = postCount
+      ? `此分類共有 ${postCount} 則發文話術，可在下方區域上下滑動瀏覽。`
+      : "目前沒有符合的發文內容，請更換分類或搜尋詞。";
   }
-  requestAnimationFrame(() => {
-    updateSwipePosition("post");
-    updateSwipePosition("care");
-  });
-}
+  if (careCountLabel) {
+    careCountLabel.textContent = careCount
+      ? `此分類共有 ${careCount} 則關懷訊息，可在下方區域上下滑動瀏覽。`
+      : "目前沒有符合的關懷情境，請更換分類或搜尋詞。";
+  }
 
-function bindSwipeGrid(kind, grid) {
-  if (!grid) return;
-
-  grid.addEventListener("scroll", () => updateSwipePosition(kind), {passive:true});
-
-  // Touch screens use native horizontal swipe. Desktop users can drag the card rail.
-  let pointerStartX = 0;
-  let scrollStartX = 0;
-  let dragging = false;
-
-  grid.addEventListener("pointerdown", event => {
-    if (event.pointerType !== "mouse" || event.button !== 0) return;
-    if (event.target.closest("button, a, input, textarea, select, summary, details")) return;
-    dragging = true;
-    pointerStartX = event.clientX;
-    scrollStartX = grid.scrollLeft;
-    grid.classList.add("is-dragging");
-    grid.setPointerCapture(event.pointerId);
-  });
-
-  grid.addEventListener("pointermove", event => {
-    if (!dragging) return;
-    grid.scrollLeft = scrollStartX - (event.clientX - pointerStartX);
-  });
-
-  const endDrag = () => {
-    dragging = false;
-    grid.classList.remove("is-dragging");
-  };
-  grid.addEventListener("pointerup", endDrag);
-  grid.addEventListener("pointercancel", endDrag);
-  grid.addEventListener("lostpointercapture", endDrag);
-
-  grid.addEventListener("keydown", event => {
-    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-    event.preventDefault();
-    grid.scrollBy({left:(event.key === "ArrowRight" ? 1 : -1) * grid.clientWidth, behavior:"smooth"});
-  });
+  if (resetScroll) {
+    if (postGrid) postGrid.scrollTop = 0;
+    if (careGrid) careGrid.scrollTop = 0;
+  }
 }
 
 searchInput?.addEventListener("input", () => filterContent(true));
@@ -141,8 +67,6 @@ careFilters.forEach(button => button.addEventListener("click", () => {
   filterContent(true);
 }));
 
-bindSwipeGrid("post", postGrid);
-bindSwipeGrid("care", careGrid);
 filterContent(true);
 
 const toast = document.querySelector("#toast");
