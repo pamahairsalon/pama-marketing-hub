@@ -86,3 +86,5 @@
 @media(min-width:1050px){.toolkit-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.tool-link-card{padding:22px 20px}.tool-link-card h3{font-size:20px}}
 @media(min-width:651px) and (max-width:1049px){.toolkit-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .gpt-generate-card{border-color:#dfe6dd}
+
+.tool-card-link-disabled{color:#8b9389;border-bottom:1px solid #dce1d8;cursor:not-allowed;pointer-events:none;}
