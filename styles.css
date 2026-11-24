@@ -221,3 +221,68 @@ body{font-size:16px;line-height:1.75}
 .advisor-note{font-size:12px;line-height:1.8;color:#8c968e;margin:16px 0 0}
 @media(max-width:900px){.advisor-grid{grid-template-columns:1fr 1fr}.advisor-card:last-child{grid-column:1/-1;min-height:0}}
 @media(max-width:650px){.advisor-section{padding:24px 14px;margin:22px 0 26px}.advisor-heading{display:block}.advisor-heading h3{font-size:23px}.advisor-heading>div>p:last-child{font-size:14px}.advisor-heading .toolkit-aside{display:block;margin-top:12px}.advisor-grid{grid-template-columns:1fr;gap:12px}.advisor-card,.advisor-card:last-child{grid-column:auto;min-height:0;padding:19px}.advisor-card h4{font-size:22px}.advisor-role,.advisor-description,.advisor-link{font-size:14px}.advisor-note{font-size:12px}}
+
+
+/* Advisor directory: spacious, easy-to-scan stacked cards */
+.advisor-section{padding:48px 32px 36px;margin:36px 0;background:#f4f6f2}
+.advisor-heading{margin-bottom:32px}
+.advisor-heading h3{font-size:28px}
+.advisor-heading>div>p:last-child{font-size:16px;line-height:1.9;max-width:720px}
+.advisor-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.advisor-card{
+  display:grid;
+  grid-template-columns:minmax(210px,.82fr) minmax(0,1.8fr);
+  grid-template-rows:auto auto auto auto auto;
+  column-gap:38px;
+  row-gap:4px;
+  align-items:center;
+  min-height:226px;
+  padding:26px 30px;
+  border:1px solid #e1e7df;
+  border-left:4px solid #9eaa9c;
+  background:#fff;
+}
+.advisor-focus{border-left-color:#b79d63;border-top:1px solid #e1e7df}
+.advisor-management{border-left-color:#8190b4;border-top:1px solid #e1e7df}
+.advisor-action{border-left-color:#829b8e;border-top:1px solid #e1e7df}
+.advisor-top{grid-column:1 / -1;grid-row:1;margin-bottom:12px}
+.advisor-category{grid-column:1;grid-row:2;font-size:12px;margin:0 0 5px}
+.advisor-card h4{grid-column:1;grid-row:3;font-size:25px;margin:0 0 4px}
+.advisor-role{grid-column:1;grid-row:4;font-size:15px;line-height:1.8;margin:0;max-width:32ch}
+.advisor-description{grid-column:2;grid-row:2 / 5;align-self:center;font-size:16px;line-height:2.05;color:#4f5d54;margin:0;max-width:66ch}
+.advisor-link{grid-column:2;grid-row:5;justify-self:start;margin:15px 0 0;padding:9px 0 6px;font-size:15px}
+.advisor-icon{width:40px;height:40px;font-size:20px}
+.advisor-number{font-size:12px}
+.advisor-note{font-size:13px;line-height:1.9;margin-top:20px}
+@media(max-width:900px) and (min-width:651px){
+  .advisor-section{padding:36px 24px 30px}
+  .advisor-card{grid-template-columns:minmax(185px,.8fr) minmax(0,1.6fr);column-gap:24px;padding:23px 24px}
+  .advisor-description{font-size:15px}
+}
+@media(max-width:650px){
+  .advisor-section{padding:27px 16px 24px}
+  .advisor-heading{margin-bottom:22px}
+  .advisor-heading h3{font-size:24px}
+  .advisor-heading>div>p:last-child{font-size:14px;line-height:1.9}
+  .advisor-grid{gap:15px}
+  .advisor-card,.advisor-card:last-child{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0;
+    min-height:0;
+    padding:21px 19px 20px;
+    border:1px solid #e1e7df;
+    border-left:4px solid #9eaa9c;
+  }
+  .advisor-focus{border-left-color:#b79d63}
+  .advisor-management{border-left-color:#8190b4}
+  .advisor-action{border-left-color:#829b8e}
+  .advisor-top{margin-bottom:17px}
+  .advisor-category{font-size:11px;margin:0 0 7px}
+  .advisor-card h4{font-size:23px;margin:0 0 5px}
+  .advisor-role{font-size:14px;line-height:1.8;margin:0 0 12px;max-width:none}
+  .advisor-description{font-size:15px;line-height:1.95;margin:0 0 15px;max-width:none}
+  .advisor-link{font-size:14px;margin:0;padding:9px 0 5px}
+  .advisor-note{font-size:12px;line-height:1.85;margin-top:15px}
+}
