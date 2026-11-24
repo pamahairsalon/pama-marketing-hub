@@ -79,3 +79,302 @@ document.querySelectorAll("#mainNav a").forEach(link => link.addEventListener("c
   document.querySelector("#mainNav")?.classList.remove("mobile-open");
   menuButton?.setAttribute("aria-expanded", "false");
 }));
+
+// PAMA Graphic Maker — runs locally in the designer's browser.
+const graphicCanvas = document.querySelector("#graphicCanvas");
+const graphicType = document.querySelector("#graphicType");
+const graphicFormat = document.querySelector("#graphicFormat");
+const graphicHeadline = document.querySelector("#graphicHeadline");
+const graphicSubtitle = document.querySelector("#graphicSubtitle");
+const graphicBody = document.querySelector("#graphicBody");
+const graphicCta = document.querySelector("#graphicCta");
+const graphicPhoto = document.querySelector("#graphicPhoto");
+const graphicCaption = document.querySelector("#graphicCaption");
+const graphicDownload = document.querySelector("#graphicDownload");
+const graphicCopy = document.querySelector("#graphicCopy");
+const previewDimension = document.querySelector("#previewDimension");
+const graphicContext = graphicCanvas?.getContext("2d");
+let graphicPhotoImage = null;
+
+const graphicPresets = {
+  work: {
+    headline:"讓髮型，成為你的風格",
+    subtitle:"從適合自己的設計開始",
+    body:"依照臉型、髮質與日常習慣，找到最適合你的造型方向。",
+    cta:"預約你的專屬造型提案",
+    caption:"每一次的髮型設計，都從了解你開始。依照自己的喜好、髮況與日常習慣，找到真正適合的造型。想嘗試新的樣子，歡迎和我聊聊。"
+  },
+  knowledge: {
+    headline:"好整理的髮型，從細節開始",
+    subtitle:"剪裁與日常習慣都很重要",
+    body:"適合的層次、長度與輪廓，能讓每天整理頭髮更符合自己的生活節奏。",
+    cta:"一起找到適合你的剪裁",
+    caption:"好整理的髮型，不只是跟上流行，更要符合自己的髮質、髮流與生活習慣。下一次整理頭髮時，也可以和設計師聊聊最在意的細節。"
+  },
+  care: {
+    headline:"把日常照護，變成好髮質",
+    subtitle:"了解髮況，選擇適合的方式",
+    body:"從清潔、吹整到居家養護，依照目前髮況調整照護習慣。",
+    cta:"詢問適合自己的養護方式",
+    caption:"漂亮的髮型，也需要日常照護一起成就。了解自己的髮況，選擇適合的清潔與養護方式，讓柔順與光澤成為日常。"
+  },
+  booking: {
+    headline:"留一點時間，整理喜歡的自己",
+    subtitle:"近期預約時段開放安排",
+    body:"想整理髮型、調整髮色或安排養護，歡迎提前與設計師討論。",
+    cta:"私訊設計師安排時間",
+    caption:"最近想幫頭髮換個樣子嗎？剪髮、染髮、燙髮或養護，都可以先和我聊聊你的想法，再一起安排適合的時間。"
+  },
+  seasonal: {
+    headline:"為季節，換一種新的風格",
+    subtitle:"讓造型跟上生活的每個時刻",
+    body:"從髮色、線條到日常造型，找到適合當下自己的變化。",
+    cta:"聊聊你的季節造型提案",
+    caption:"每個季節都有新的靈感。想嘗試不一樣的髮色、剪裁或造型嗎？可以依照髮況與平常習慣，一起找到適合自己的改變。"
+  }
+};
+
+function showGraphicToast(message) {
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add("show");
+  window.clearTimeout(toastTimer);
+  toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2500);
+}
+
+function roundedPath(ctx, x, y, width, height, radius) {
+  const r = Math.min(radius, width / 2, height / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + width, y, x + width, y + height, r);
+  ctx.arcTo(x + width, y + height, x, y + height, r);
+  ctx.arcTo(x, y + height, x, y, r);
+  ctx.arcTo(x, y, x + width, y, r);
+  ctx.closePath();
+}
+
+function wrapGraphicText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+  const paragraphs = String(text || "").split("\n");
+  const lines = [];
+  paragraphs.forEach((paragraph, paragraphIndex) => {
+    let current = "";
+    for (const character of paragraph) {
+      const candidate = current + character;
+      if (current && ctx.measureText(candidate).width > maxWidth) {
+        lines.push(current);
+        current = character;
+      } else {
+        current = candidate;
+      }
+    }
+    if (current) lines.push(current);
+    if (paragraphIndex < paragraphs.length - 1) lines.push("");
+  });
+  const visibleLines = lines.slice(0, maxLines);
+  visibleLines.forEach((line, index) => ctx.fillText(line, x, y + index * lineHeight));
+  return y + visibleLines.length * lineHeight;
+}
+
+function drawPhotoCover(ctx, image, x, y, width, height) {
+  const scale = Math.max(width / image.width, height / image.height);
+  const cropWidth = width / scale;
+  const cropHeight = height / scale;
+  const cropX = (image.width - cropWidth) / 2;
+  const cropY = (image.height - cropHeight) / 2;
+  ctx.save();
+  roundedPath(ctx, x, y, width, height, 18);
+  ctx.clip();
+  ctx.drawImage(image, cropX, cropY, cropWidth, cropHeight, x, y, width, height);
+  ctx.restore();
+}
+
+const graphicLogo = new Image();
+graphicLogo.onload = () => renderGraphic();
+graphicLogo.src = "assets/pama-logo.svg";
+
+function renderGraphic() {
+  if (!graphicCanvas || !graphicContext) return;
+  const isStory = graphicFormat?.value === "story";
+  const width = 1080;
+  const height = isStory ? 1920 : 1350;
+  if (graphicCanvas.width !== width) graphicCanvas.width = width;
+  if (graphicCanvas.height !== height) graphicCanvas.height = height;
+  if (previewDimension) previewDimension.textContent = isStory ? "1080 × 1920 px" : "1080 × 1350 px";
+
+  const ctx = graphicContext;
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = "#FFF6E9";
+  ctx.fillRect(0, 0, width, height);
+
+  // Top brand header
+  if (graphicLogo.complete && graphicLogo.naturalWidth) {
+    ctx.drawImage(graphicLogo, 62, 38, 205, 75);
+  } else {
+    ctx.fillStyle = "#375B57";
+    ctx.font = "600 33px Georgia, serif";
+    ctx.fillText("PAMA", 62, 86);
+  }
+  ctx.textAlign = "right";
+  ctx.fillStyle = "#7F8B80";
+  ctx.font = "18px Arial, sans-serif";
+  ctx.fillText("DESIGNER'S STYLE NOTE", 1018, 82);
+  ctx.textAlign = "left";
+  ctx.fillStyle = "#DFB743";
+  ctx.fillRect(62, 133, 956, 2);
+
+  ctx.fillStyle = "#A28B4D";
+  ctx.font = "600 17px Arial, sans-serif";
+  ctx.fillText((graphicType?.selectedOptions?.[0]?.textContent || "PAMA STYLE").toUpperCase(), 68, 190);
+
+  ctx.fillStyle = "#294744";
+  ctx.font = "500 48px 'Noto Serif TC', 'Songti TC', serif";
+  wrapGraphicText(ctx, graphicHeadline?.value || "分享你的專屬風格", 68, 254, 940, 62, 2);
+
+  ctx.fillStyle = "#78847B";
+  ctx.font = "24px 'Noto Sans TC', sans-serif";
+  wrapGraphicText(ctx, graphicSubtitle?.value || "", 70, 316, 930, 36, 1);
+
+  const imageY = 365;
+  const imageHeight = isStory ? 900 : 490;
+  const imageX = 60;
+  const imageWidth = 960;
+  if (graphicPhotoImage) {
+    drawPhotoCover(ctx, graphicPhotoImage, imageX, imageY, imageWidth, imageHeight);
+  } else {
+    ctx.save();
+    roundedPath(ctx, imageX, imageY, imageWidth, imageHeight, 18);
+    ctx.clip();
+    const gradient = ctx.createLinearGradient(imageX, imageY, imageX + imageWidth, imageY + imageHeight);
+    gradient.addColorStop(0, "#B8B8A8");
+    gradient.addColorStop(0.55, "#718279");
+    gradient.addColorStop(1, "#375B57");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(imageX, imageY, imageWidth, imageHeight);
+    ctx.fillStyle = "rgba(255,246,233,.15)";
+    ctx.beginPath();
+    ctx.ellipse(720, imageY + imageHeight * .46, 300, imageHeight * .52, -.24, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255,246,233,.55)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.ellipse(540, imageY + imageHeight * .5, 395, imageHeight * .58, .18, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.fillStyle = "#FFF6E9";
+    ctx.font = "italic 29px Georgia, serif";
+    ctx.fillText("YOUR PHOTO", 95, imageY + imageHeight - 45);
+    ctx.restore();
+  }
+
+  const bottomY = imageY + imageHeight + (isStory ? 78 : 63);
+  ctx.fillStyle = "#A28B4D";
+  ctx.font = "600 17px Arial, sans-serif";
+  ctx.fillText("PAMA / HAIR DESIGN", 68, bottomY);
+  ctx.fillStyle = "#294744";
+  ctx.font = "500 34px 'Noto Serif TC', 'Songti TC', serif";
+  const bodyEnd = wrapGraphicText(ctx, graphicBody?.value || "", 68, bottomY + 57, 920, 46, isStory ? 4 : 3);
+
+  const ctaY = isStory ? 1690 : 1138;
+  roundedPath(ctx, 68, ctaY - 42, 455, 62, 31);
+  ctx.fillStyle = "#375B57";
+  ctx.fill();
+  ctx.fillStyle = "#FFF6E9";
+  ctx.font = "500 22px 'Noto Sans TC', sans-serif";
+  ctx.fillText(graphicCta?.value || "了解更多造型提案", 94, ctaY - 3);
+
+  ctx.fillStyle = "#9A9B8E";
+  ctx.font = "16px Arial, sans-serif";
+  ctx.fillText("PROFESSIONAL · PASSION · MODERN · ART", 68, height - 47);
+  ctx.textAlign = "right";
+  ctx.fillStyle = "#A28B4D";
+  ctx.fillText("PAMA SALON", 1018, height - 47);
+  ctx.textAlign = "left";
+}
+
+function applyGraphicPreset() {
+  const preset = graphicPresets[graphicType?.value || "work"];
+  if (!preset) return;
+  if (graphicHeadline) graphicHeadline.value = preset.headline;
+  if (graphicSubtitle) graphicSubtitle.value = preset.subtitle;
+  if (graphicBody) graphicBody.value = preset.body;
+  if (graphicCta) graphicCta.value = preset.cta;
+  if (graphicCaption) graphicCaption.value = preset.caption;
+  renderGraphic();
+}
+
+[graphicHeadline, graphicSubtitle, graphicBody, graphicCta].forEach(field => {
+  field?.addEventListener("input", renderGraphic);
+});
+graphicFormat?.addEventListener("change", renderGraphic);
+graphicType?.addEventListener("change", applyGraphicPreset);
+
+graphicPhoto?.addEventListener("change", () => {
+  const file = graphicPhoto.files?.[0];
+  if (!file) {
+    graphicPhotoImage = null;
+    renderGraphic();
+    return;
+  }
+  if (!file.type.startsWith("image/")) {
+    showGraphicToast("請選擇圖片檔案。");
+    graphicPhoto.value = "";
+    return;
+  }
+  if (file.size > 12 * 1024 * 1024) {
+    showGraphicToast("圖片請控制在 12 MB 以內。");
+    graphicPhoto.value = "";
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    const image = new Image();
+    image.onload = () => {
+      graphicPhotoImage = image;
+      renderGraphic();
+    };
+    image.onerror = () => showGraphicToast("圖片讀取失敗，請換一張照片。");
+    image.src = String(reader.result);
+  };
+  reader.onerror = () => showGraphicToast("圖片讀取失敗，請重試。");
+  reader.readAsDataURL(file);
+});
+
+graphicDownload?.addEventListener("click", () => {
+  if (!graphicCanvas) return;
+  graphicCanvas.toBlob(blob => {
+    if (!blob) {
+      showGraphicToast("圖卡產生失敗，請重新試一次。");
+      return;
+    }
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = graphicFormat?.value === "story" ? "PAMA-限時動態圖卡.png" : "PAMA-貼文圖卡.png";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    showGraphicToast("圖卡已下載！");
+  }, "image/png");
+});
+
+graphicCopy?.addEventListener("click", async () => {
+  const text = graphicCaption?.value || "";
+  if (!text.trim()) {
+    showGraphicToast("請先輸入貼文文案。");
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(text);
+    showGraphicToast("貼文文案已複製！");
+  } catch {
+    graphicCaption?.focus();
+    graphicCaption?.select();
+    const copied = document.execCommand("copy");
+    showGraphicToast(copied ? "貼文文案已複製！" : "請手動選取文案複製。");
+  }
+});
+
+if (graphicCanvas) {
+  if (document.fonts?.ready) document.fonts.ready.then(renderGraphic);
+  else renderGraphic();
+}
