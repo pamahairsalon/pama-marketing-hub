@@ -71,10 +71,10 @@
 
   <section class="content-section posting-section" id="posting">
     <div class="section-heading">
-      <div><p class="eyebrow muted">01 / SOCIAL CONTENT</p><h2>我想發文</h2><p>把作品、專業與日常，轉化成顧客看得懂也願意停留的內容。</p></div>
+      <div><p class="eyebrow muted">01 / SOCIAL CONTENT</p><h2>我想發文</h2><p>選擇分類，一次瀏覽一則發文話術。</p></div>
       <span class="section-aside">POST WITH PURPOSE</span>
     </div>
-    <p class="posting-guide">依照今天想分享的內容選擇分類。每個範例都可以先複製，再補上實際作品特色、顧客需求與你的個人語氣。</p>
+    <p class="posting-guide">先選擇內容類型，再逐則查看；展開後即可複製完整文案。</p>
     <div class="filter-row" role="group" aria-label="發文內容分類">
       <button class="filter-button" data-filter="all">全部內容</button>
       <button class="filter-button active" data-filter="作品分享">作品分享</button>
@@ -86,6 +86,11 @@
       <button class="filter-button" data-filter="節慶活動">節慶活動</button>
     </div>
     <p class="result-count" id="postResultCount" aria-live="polite"></p>
+    <div class="library-pager" id="postPager" aria-label="話術瀏覽">
+      <button type="button" class="pager-button" id="postPrev" disabled>← 上一則</button>
+      <span class="pager-count" id="postPageLabel">第 1 / 1 則</span>
+      <button type="button" class="pager-button" id="postNext" disabled>下一則 →</button>
+    </div>
     <div class="content-grid" id="postGrid">
       <article class="content-card" data-kind="post" data-category="作品分享" data-search="作品分享 染髮 髮色 造型 作品">
         <div class="card-visual visual-hair"><span>STYLE NOTE / 01</span><b>COLOR<br><i>STORY</i></b></div>
@@ -228,10 +233,10 @@
 
   <section class="content-section care-section" id="care">
     <div class="section-heading">
-      <div><p class="eyebrow muted">02 / CLIENT RELATIONSHIP</p><h2>我想關心顧客</h2><p>不必每次都從預約開始，真誠而合適的關心，也能延續服務的溫度。</p></div>
+      <div><p class="eyebrow muted">02 / CLIENT RELATIONSHIP</p><h2>我想關心顧客</h2><p>從服務後照顧到日常問候，找到合適的關心方式。</p></div>
       <span class="section-aside">CARE BEYOND THE SALON</span>
     </div>
-    <p class="care-guide">先選擇顧客目前的情境，再展開話術範例。每則訊息都可以依照你和顧客的熟悉程度調整，不需要制式照貼。</p>
+    <p class="care-guide">選擇關心情境，一次看一則訊息；展開後可複製完整話術。</p>
     <div class="filter-row" role="group" aria-label="顧客關懷情境分類">
       <button class="care-filter" data-care-filter="all">全部情境</button>
       <button class="care-filter active" data-care-filter="服務後關心">服務後關心</button>
@@ -242,6 +247,11 @@
       <button class="care-filter" data-care-filter="日常問候">日常問候</button>
     </div>
     <p class="result-count" id="careResultCount" aria-live="polite"></p>
+    <div class="library-pager" id="carePager" aria-label="話術瀏覽">
+      <button type="button" class="pager-button" id="carePrev" disabled>← 上一則</button>
+      <span class="pager-count" id="carePageLabel">第 1 / 1 則</span>
+      <button type="button" class="pager-button" id="careNext" disabled>下一則 →</button>
+    </div>
     <div class="care-grid" id="careGrid">
       <article class="care-card" data-kind="care" data-category="服務後關心" data-search="服務後關心 剪髮 染髮 燙髮 剛完成 服務 滿意度">
         <div class="care-card-head"><span class="care-icon">♡</span><span class="care-label">服務後關心</span></div>
