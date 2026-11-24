@@ -104,3 +104,95 @@
 .prompt-result-actions{margin-top:12px}
 .prompt-chatgpt-link{display:inline-flex;align-items:center;justify-content:center;padding:12px 15px;text-decoration:none}
 @media(max-width:650px){.pama-prompt-helper{padding:18px 13px}.prompt-helper-heading{display:block}.prompt-helper-heading h3{font-size:20px}.prompt-helper-heading .beta-tag{display:inline-block;margin-top:12px}.prompt-helper-layout{grid-template-columns:1fr;gap:22px}.prompt-result-panel{order:2}.prompt-result-panel textarea{min-height:260px}.prompt-helper-actions,.prompt-result-actions{display:grid;grid-template-columns:1fr 1fr}.prompt-helper-actions button,.prompt-result-actions button,.prompt-chatgpt-link{font-size:9px;padding:11px 8px}}
+
+
+/* Global readability pass — increase small supporting text and form controls */
+body{font-size:16px;line-height:1.75}
+.main-nav{font-size:14px}
+.header-link{font-size:13px}
+.brand-copy small{font-size:10px}
+.eyebrow{font-size:11px;letter-spacing:2px}
+.hero-lead{font-size:16px;line-height:2}
+.hero-search input{font-size:15px}
+.hero-search kbd{font-size:11px}
+.hero-note{font-size:12px}
+.section-intro>p:last-child,.section-heading>div>p:last-child{font-size:14px}
+.start-card>div:nth-child(2)>p{font-size:11px}
+.start-card>div:nth-child(2)>span{font-size:14px}
+.start-arrow{font-size:13px}
+.filter-button,.care-filter{font-size:13px}
+.card-visual>span{font-size:11px}
+.card-meta span,.card-meta small{font-size:12px}
+.card-content>p:not(.edit-hint){font-size:14px;line-height:1.9}
+.sample-copy,.message-copy{font-size:14px;line-height:1.9}
+.edit-hint{font-size:12px}
+.copy-button{font-size:13px}
+.care-label{font-size:12px}
+.care-scene{font-size:13px}
+.trend-update{font-size:12px}
+.trend-intro{font-size:14px;line-height:1.9}
+.trend-topic-meta span{font-size:12px}
+.trend-topic-meta small{font-size:11px}
+.trend-topic>p{font-size:14px;line-height:1.9;min-height:0}
+.trend-prompt b{font-size:12px}
+.trend-prompt span{font-size:13px;line-height:1.8}
+.trend-actions>a{font-size:12px}
+.trend-footnote{font-size:12px;line-height:1.8}
+.toolkit-heading>div>p:last-child{font-size:14px}
+.tool-card-index{font-size:11px}
+.tool-label{font-size:11px}
+.tool-link-card p{font-size:14px;line-height:1.9}
+.tool-card-link{font-size:14px}
+.tool-disclaimer{font-size:12px;line-height:1.7}
+.graphic-maker-heading>div>p:last-child,.prompt-helper-heading>div>p:last-child{font-size:14px;line-height:1.9}
+.beta-tag{font-size:11px}
+.tool-field>span,.graphic-caption-wrap>label{font-size:14px}
+.tool-field input,.tool-field select,.tool-field textarea,.graphic-caption-wrap textarea{font-size:15px;line-height:1.7}
+.tool-field input[type=file]{font-size:13px}
+.tool-form-note{font-size:12px;line-height:1.8}
+.graphic-download,.graphic-copy{font-size:14px}
+.preview-heading span{font-size:13px}
+.preview-heading small{font-size:11px}
+.prompt-result-panel textarea{font-size:14px;line-height:1.9}
+.prompt-chatgpt-link{font-size:14px}
+.preview-note{font-size:12px;line-height:1.8}
+.guide-grid b{font-size:13px}
+.guide-grid p{font-size:14px;line-height:1.9}
+.inspiration-copy>p:last-child{font-size:14px;line-height:2}
+.inspiration-list b{font-size:17px}
+.inspiration-list small{font-size:12px}
+.footer>span,.footer>small{font-size:11px;line-height:1.7}
+.toast{font-size:14px}
+@media(max-width:850px){
+  .hero-lead{font-size:15px}
+  .section-intro>p:last-child,.section-heading>div>p:last-child{font-size:14px}
+}
+@media(max-width:650px){
+  body{font-size:16px}
+  .main-nav.mobile-open{font-size:16px}
+  .hero-lead{font-size:15px;line-height:1.9}
+  .hero-search input{font-size:16px}
+  .hero-note{font-size:12px}
+  .section-intro h2,.section-heading h2{font-size:26px}
+  .filter-button,.care-filter{font-size:13px;padding:9px 12px}
+  .card-content>p:not(.edit-hint),.sample-copy,.message-copy{font-size:14px}
+  .edit-hint{font-size:12px}
+  .care-label{font-size:12px}
+  .care-scene{font-size:13px}
+  .trend-topic-meta span{font-size:12px}
+  .trend-topic-meta small{font-size:11px}
+  .trend-topic>p{font-size:14px}
+  .trend-prompt b,.trend-prompt span{font-size:13px}
+  .trend-footnote{font-size:12px}
+  .tool-link-card p{font-size:14px}
+  .tool-card-index,.tool-label{font-size:11px}
+  .tool-disclaimer{font-size:12px}
+  .tool-field>span,.graphic-caption-wrap>label{font-size:14px}
+  .tool-field input,.tool-field select,.tool-field textarea,.graphic-caption-wrap textarea{font-size:16px}
+  .tool-form-note,.preview-note{font-size:12px}
+  .prompt-result-panel textarea{font-size:14px;min-height:290px}
+  .graphic-download,.graphic-copy,.prompt-chatgpt-link{font-size:14px}
+  .guide-grid b{font-size:14px}
+  .guide-grid p{font-size:14px}
+  .footer>span,.footer>small{font-size:12px}
+}
