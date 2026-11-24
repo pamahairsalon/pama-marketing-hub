@@ -86,12 +86,12 @@
       <button class="filter-button" data-filter="節慶活動">節慶活動</button>
     </div>
     <p class="result-count" id="postResultCount" aria-live="polite"></p>
-    <div class="library-pager" id="postPager" aria-label="話術瀏覽">
-      <button type="button" class="pager-button" id="postPrev" disabled>← 上一則</button>
-      <span class="pager-count" id="postPageLabel">第 1 / 1 則</span>
-      <button type="button" class="pager-button" id="postNext" disabled>下一則 →</button>
+    
+    <div class="swipe-guide" id="postSwipeGuide">
+      <span>← 左右滑動瀏覽發文話術 →</span>
+      <span class="swipe-position" id="postSwipePosition">第 1 / 1 則</span>
     </div>
-    <div class="content-grid" id="postGrid">
+    <div class="content-grid" id="postGrid" tabindex="0" aria-label="左右滑動瀏覽話術">
       <article class="content-card" data-kind="post" data-category="作品分享" data-search="作品分享 染髮 髮色 造型 作品">
         <div class="card-visual visual-hair"><span>STYLE NOTE / 01</span><b>COLOR<br><i>STORY</i></b></div>
         <div class="card-content">
@@ -247,12 +247,12 @@
       <button class="care-filter" data-care-filter="日常問候">日常問候</button>
     </div>
     <p class="result-count" id="careResultCount" aria-live="polite"></p>
-    <div class="library-pager" id="carePager" aria-label="話術瀏覽">
-      <button type="button" class="pager-button" id="carePrev" disabled>← 上一則</button>
-      <span class="pager-count" id="carePageLabel">第 1 / 1 則</span>
-      <button type="button" class="pager-button" id="careNext" disabled>下一則 →</button>
+    
+    <div class="swipe-guide" id="careSwipeGuide">
+      <span>← 左右滑動瀏覽顧客關懷 →</span>
+      <span class="swipe-position" id="careSwipePosition">第 1 / 1 則</span>
     </div>
-    <div class="care-grid" id="careGrid">
+    <div class="care-grid" id="careGrid" tabindex="0" aria-label="左右滑動瀏覽話術">
       <article class="care-card" data-kind="care" data-category="服務後關心" data-search="服務後關心 剪髮 染髮 燙髮 剛完成 服務 滿意度">
         <div class="care-card-head"><span class="care-icon">♡</span><span class="care-label">服務後關心</span></div>
         <h3>剛完成服務後</h3>
