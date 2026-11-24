@@ -378,3 +378,63 @@ if (graphicCanvas) {
   if (document.fonts?.ready) document.fonts.ready.then(renderGraphic);
   else renderGraphic();
 }
+
+
+// PAMA Free Prompt Helper — no API key, paid plugin or company seat required.
+const pamaPromptTask=document.querySelector("#pamaPromptTask");
+const pamaPromptService=document.querySelector("#pamaPromptService");
+const pamaPromptDetails=document.querySelector("#pamaPromptDetails");
+const pamaPromptPlatform=document.querySelector("#pamaPromptPlatform");
+const pamaPromptTone=document.querySelector("#pamaPromptTone");
+const pamaPromptExtra=document.querySelector("#pamaPromptExtra");
+const pamaPromptResult=document.querySelector("#pamaPromptResult");
+const pamaPromptGenerate=document.querySelector("#pamaPromptGenerate");
+const pamaPromptCopy=document.querySelector("#pamaPromptCopy");
+const pamaPromptReset=document.querySelector("#pamaPromptReset");
+const pamaPromptTasks={
+work:{name:"髮型作品分享貼文",goal:"撰寫一篇能呈現作品特色、吸引適合客群並自然引導諮詢的作品分享內容。",requirements:"提供2個不同切入角度，先列出最推薦版本。包含吸引人的開頭、作品特色、適合族群或造型亮點，以及自然的預約／諮詢引導。不要捏造服務效果、價格、時間或顧客評價。"},
+story:{name:"Instagram 限時動態",goal:"把資訊整理成容易閱讀、能快速吸引注意的限時動態內容。",requirements:"規劃3張連續限時動態，每張包含主標、簡短內文與建議互動方式。文字精簡，避免一張塞入太多資訊。"},
+reels:{name:"Reels 短影音腳本",goal:"規劃一支適合手機直式拍攝的短影音。",requirements:"提供15～30秒腳本，按秒數分鏡，包含畫面、字幕、口白／旁白、拍攝建議與結尾行動引導。以門店實際能拍攝的畫面為主，不假設有昂貴器材。"},
+knowledge:{name:"髮型／造型知識內容",goal:"把髮型或造型知識轉化成消費者看得懂、願意收藏的內容。",requirements:"提供3個實用重點及適合社群閱讀的標題。不確定的專業內容請標示待設計師確認，不誇大效果或保證結果。"},
+care:{name:"服務後顧客關心",goal:"撰寫一段服務後自然、有溫度的關心訊息。",requirements:"提供短版及較親切版各一則，像設計師親自傳送，不要立刻推銷；提醒事項只依實際服務內容，不自行推測。"},
+revisit:{name:"熟客回訪邀約",goal:"撰寫不造成壓力的熟客回訪訊息。",requirements:"提供2種語氣版本，避免催促。若沒有提供上次服務日期或建議回訪時間，不要自行編造。"},
+reply:{name:"顧客訊息回覆",goal:"協助設計師回覆顧客訊息，清楚、親切並維持專業。",requirements:"先整理顧客想問的重點，再提供可直接傳送的回覆。資訊不足時列出需確認的問題，不要自行承諾價格、時段、效果或補償。"},
+campaign:{name:"活動／節慶宣傳",goal:"把活動資訊整理成清楚、有吸引力且不過度促銷的社群文案。",requirements:"先整理活動時間、對象、內容、價格或優惠（僅使用已提供資訊），再提供貼文版本與限動精簡版。不得捏造規則、名額、價格或截止日期。"}
+};
+function buildPamaPrompt(){
+ const item=pamaPromptTasks[pamaPromptTask?.value||"work"];
+ if(!item||!pamaPromptResult)return;
+ const service=(pamaPromptService?.value||"").trim();
+ const details=(pamaPromptDetails?.value||"").trim();
+ const extra=(pamaPromptExtra?.value||"").trim();
+ pamaPromptResult.value=[
+ "請你扮演「帕瑪造型沙龍」的專業社群與顧客服務內容助理，協助我完成以下工作。","","【品牌背景與語氣】",
+ "品牌：帕瑪造型沙龍（PAMA Hair Salon）。品牌核心為 Professional（專業）、Passion（熱情）、Modern（時尚）、Art（藝術）。",
+ "請使用台灣繁體中文，語氣自然、專業、有溫度及質感；避免浮誇、硬銷、過度制式或中國用語。不要把男士燙髮當成品牌整體定位。",
+ "不得自行編造價格、優惠、營業時間、門店資訊或服務承諾；資訊不足時請先詢問，不要猜測。","","【本次任務】",
+ "工作類型："+item.name,"工作目標："+item.goal,"發布／使用平台："+(pamaPromptPlatform?.value||"Instagram 貼文"),
+ "希望的文字風格："+(pamaPromptTone?.value||"自然、有質感"),"作品或服務資訊："+(service||"未提供，請勿自行假設"),
+ "希望呈現的重點："+(details||"請依已提供資料整理；不足時先詢問"),"其他補充："+(extra||"無"),"","【交付要求】",
+ item.requirements,"請先提供可直接使用的完整版本，再簡短列出需要我確認或補充的資訊。文字要適合手機閱讀，並把標題、內文、行動引導清楚分開。",
+ "如果資訊不足，先提出最多3個最重要的問題，不要憑空補資料。","","【顧客隱私】",
+ "不要要求或輸出顧客姓名、電話、LINE ID、地址、健康狀況或其他可識別個人的敏感資料。請使用匿名描述。"
+ ].join("\n");
+ pamaPromptResult.focus();
+}
+pamaPromptGenerate?.addEventListener("click",()=>{buildPamaPrompt();showGraphicToast("帕瑪專屬指令已產生！");});
+pamaPromptCopy?.addEventListener("click",async()=>{
+ const text=pamaPromptResult?.value||"";
+ if(!text.trim()){showGraphicToast("請先產生指令。");return;}
+ try{await navigator.clipboard.writeText(text);showGraphicToast("指令已複製！接著開啟 ChatGPT 貼上即可。");}
+ catch{pamaPromptResult?.focus();pamaPromptResult?.select();const copied=document.execCommand("copy");showGraphicToast(copied?"指令已複製！":"請手動選取指令複製。");}
+});
+pamaPromptReset?.addEventListener("click",()=>{
+ if(pamaPromptTask)pamaPromptTask.value="work";
+ if(pamaPromptService)pamaPromptService.value="";
+ if(pamaPromptDetails)pamaPromptDetails.value="";
+ if(pamaPromptPlatform)pamaPromptPlatform.value="Instagram 貼文";
+ if(pamaPromptTone)pamaPromptTone.selectedIndex=0;
+ if(pamaPromptExtra)pamaPromptExtra.value="";
+ if(pamaPromptResult)pamaPromptResult.value="";
+ showGraphicToast("已清除內容。");
+});
