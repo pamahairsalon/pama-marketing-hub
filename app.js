@@ -4,8 +4,8 @@ const trendCards = [...document.querySelectorAll(".trend-topic")];
 const postFilters = [...document.querySelectorAll("[data-filter]")];
 const careFilters = [...document.querySelectorAll("[data-care-filter]")];
 
-let postCategory = "all";
-let careCategory = "all";
+let postCategory = "作品分享";
+let careCategory = "服務後關心";
 
 function filterContent() {
   const query = (searchInput?.value || "").trim().toLocaleLowerCase();
@@ -42,6 +42,9 @@ careFilters.forEach(button => button.addEventListener("click", () => {
   careFilters.forEach(item => item.classList.toggle("active", item === button));
   filterContent();
 }));
+
+// Focus the first category on load instead of showing every copy card.
+filterContent();
 
 const toast = document.querySelector("#toast");
 let toastTimer;
