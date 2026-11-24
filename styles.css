@@ -286,3 +286,60 @@ body{font-size:16px;line-height:1.75}
   .advisor-link{font-size:14px;margin:0;padding:9px 0 5px}
   .advisor-note{font-size:12px;line-height:1.85;margin-top:15px}
 }
+
+
+/* Final separation and clear calls-to-action for the advisor directory */
+.advisor-section{
+  margin:58px 0 0;
+  padding:38px 30px 32px;
+  background:var(--cream);
+  border:0;
+  border-top:3px solid var(--gold);
+  border-bottom:1px solid #e9e1ce;
+}
+.advisor-heading{margin-bottom:28px}
+.advisor-heading h3{font-size:28px}
+.advisor-heading>div>p:last-child{font-size:16px;line-height:1.9}
+.advisor-grid{gap:18px}
+.advisor-card{
+  background:#fff;
+  border:1px solid #e5e8e1;
+  border-left:4px solid #9eaa9c;
+  box-shadow:0 5px 18px rgba(41,71,68,.045);
+}
+.advisor-focus{border-top:1px solid #e5e8e1;border-left-color:#b79d63}
+.advisor-management{border-top:1px solid #e5e8e1;border-left-color:#8190b4}
+.advisor-action{border-top:1px solid #e5e8e1;border-left-color:#829b8e}
+.advisor-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin:16px 0 0;
+  padding:12px 18px;
+  min-height:44px;
+  background:var(--green);
+  color:#fff;
+  border:1px solid var(--green);
+  border-radius:3px;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.2px;
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.advisor-link span{color:var(--gold);font-size:17px}
+.advisor-link:hover{
+  background:var(--gold);
+  border-color:var(--gold);
+  color:var(--deep);
+}
+.advisor-link:hover span{color:var(--deep)}
+.advisor-link:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.advisor-note{color:#717d74;font-size:13px}
+@media(max-width:650px){
+  .advisor-section{margin-top:36px;padding:26px 15px 23px}
+  .advisor-heading{margin-bottom:20px}
+  .advisor-heading h3{font-size:24px}
+  .advisor-heading>div>p:last-child{font-size:14px}
+  .advisor-link{width:100%;min-height:46px;margin-top:4px}
+}
