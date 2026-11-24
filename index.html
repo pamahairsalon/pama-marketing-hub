@@ -14,12 +14,12 @@
 <body>
 <header class="site-header">
   <a class="brand" href="#" aria-label="PAMA Marketing Hub 首頁">
-    <span class="brand-mark">P</span>
-    <span class="brand-copy"><b>PAMA</b><small>MARKETING HUB</small></span>
+    <img class="brand-logo" src="assets/pama-logo.svg" alt="PAMA Hair Salon Since 1989">
   </a>
   <nav class="main-nav" id="mainNav">
     <a href="#posting">我要發文</a>
     <a href="#care">我要關心顧客</a>
+    <a href="#tools">設計師小工具</a>
     <a href="#inspiration">話題靈感</a>
   </nav>
   <a class="header-link" href="#guide">使用小提醒 <span>↗</span></a>
@@ -176,7 +176,78 @@
     </div>
   </section>
 
-  <section class="trend-topics" id="inspiration">
+  
+<section class="toolkit-section" id="tools">
+  <div class="toolkit-heading">
+    <div>
+      <p class="eyebrow muted">04 / DESIGNER TOOLBOX</p>
+      <h2>設計師小工具</h2>
+      <p>除了找靈感，也提供實際好用的小工具，讓日常工作更有效率。</p>
+    </div>
+    <span class="toolkit-aside">SIMPLE TOOLS, BETTER DAYS</span>
+  </div>
+  <div class="toolkit-cards">
+    <article class="tool-link-card">
+      <div class="tool-card-top"><span class="tool-card-index">TOOL / 01</span><span class="tool-symbol">▦</span></div>
+      <div><span class="tool-label">SCHEDULE HELPER</span><h3>休假表產生器</h3><p>快速整理休假資訊，讓班表或休假表的製作更方便。</p></div>
+      <a href="https://life-helper-pwa.vercel.app/" target="_blank" rel="noopener noreferrer" class="tool-card-link">開啟外部工具 <span>↗</span></a>
+      <small class="tool-disclaimer">外部網站，將另開新視窗</small>
+    </article>
+    <article class="tool-link-card graphic-tool-card">
+      <div class="tool-card-top"><span class="tool-card-index">TOOL / 02</span><span class="tool-symbol">✳</span></div>
+      <div><span class="tool-label">PAMA GRAPHIC MAKER</span><h3>PAMA 圖文小助手</h3><p>選擇版型、輸入文字、放入自己的作品照，就能產生可下載的社群圖卡。</p></div>
+      <a href="#graphic-maker" class="tool-card-link">開始製作圖卡 <span>↓</span></a>
+      <small class="tool-disclaimer">免排版經驗・瀏覽器內完成</small>
+    </article>
+  </div>
+
+  <div class="graphic-maker" id="graphic-maker">
+    <div class="graphic-maker-heading">
+      <div><p class="eyebrow muted">PAMA GRAPHIC MAKER / BETA</p><h3>把作品，變成一張好看的貼文。</h3><p>填入簡單內容、上傳作品照片，系統會自動套用帕瑪版型。</p></div>
+      <span class="beta-tag">第一版工具</span>
+    </div>
+    <div class="graphic-maker-layout">
+      <div class="graphic-form">
+        <label class="tool-field"><span>想製作哪一種內容？</span>
+          <select id="graphicType">
+            <option value="work">作品分享</option>
+            <option value="knowledge">髮型知識</option>
+            <option value="care">養護提醒</option>
+            <option value="booking">預約公告</option>
+            <option value="seasonal">節慶活動</option>
+          </select>
+        </label>
+        <label class="tool-field"><span>圖卡尺寸</span>
+          <select id="graphicFormat">
+            <option value="feed">IG 貼文 4:5（1080 × 1350）</option>
+            <option value="story">IG 限時動態 9:16（1080 × 1920）</option>
+          </select>
+        </label>
+        <label class="tool-field"><span>主標題</span><input id="graphicHeadline" maxlength="28" value="讓髮型，成為你的風格"></label>
+        <label class="tool-field"><span>副標題</span><input id="graphicSubtitle" maxlength="42" value="從適合自己的設計開始"></label>
+        <label class="tool-field"><span>補充說明</span><textarea id="graphicBody" rows="3" maxlength="130">依照臉型、髮質與日常習慣，找到最適合你的造型方向。</textarea></label>
+        <label class="tool-field"><span>行動文字</span><input id="graphicCta" maxlength="26" value="預約你的專屬造型提案"></label>
+        <label class="tool-field"><span>上傳作品照片（選填）</span><input id="graphicPhoto" type="file" accept="image/*"></label>
+        <p class="tool-form-note">建議使用清晰、已取得顧客同意的作品照片。圖片只在你的瀏覽器中處理，不會上傳到 GitHub。</p>
+        <div class="graphic-caption-wrap">
+          <label for="graphicCaption">搭配貼文文案（可自行修改）</label>
+          <textarea id="graphicCaption" rows="5">每一次的髮型設計，都從了解你開始。依照自己的喜好、髮況與日常習慣，找到真正適合的造型。想嘗試新的樣子，歡迎和我聊聊。</textarea>
+        </div>
+        <div class="graphic-actions">
+          <button type="button" class="graphic-download" id="graphicDownload">下載圖卡 PNG <span>↓</span></button>
+          <button type="button" class="graphic-copy" id="graphicCopy">複製貼文文案</button>
+        </div>
+      </div>
+      <div class="graphic-preview-wrap">
+        <div class="preview-heading"><span>即時預覽</span><small id="previewDimension">1080 × 1350 px</small></div>
+        <div class="graphic-canvas-frame"><canvas id="graphicCanvas" width="1080" height="1350" aria-label="社群圖卡即時預覽"></canvas></div>
+        <p class="preview-note">文字與照片會依你輸入的內容即時更新。下載後即可發布，建議再由設計師確認文字與作品資訊。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trend-topics" id="inspiration">
   <div class="trend-heading">
     <div>
       <p class="eyebrow muted">03 / TREND RADAR</p>
@@ -256,7 +327,7 @@
   </section>
 </main>
 <footer class="footer">
-  <a class="brand" href="#"><span class="brand-mark">P</span><span class="brand-copy"><b>PAMA</b><small>MARKETING HUB</small></span></a>
+  <a class="brand" href="#"><img class="brand-logo" src="assets/pama-logo.svg" alt="PAMA Hair Salon Since 1989"></a>
   <span>帕瑪造型沙龍 · EST. 1989</span>
   <small>DESIGNER'S DAILY ASSISTANT</small>
 </footer>
