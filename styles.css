@@ -88,3 +88,19 @@
 .gpt-generate-card{border-color:#dfe6dd}
 
 .tool-card-link-disabled{color:#8b9389;border-bottom:1px solid #dce1d8;cursor:not-allowed;pointer-events:none;}
+
+/* Free PAMA prompt helper */
+.pama-prompt-helper{margin:28px 0 34px;padding:28px;background:#f7f8f3;border:1px solid #e5e9df}
+.prompt-helper-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:24px}
+.prompt-helper-heading .eyebrow{margin-bottom:9px}
+.prompt-helper-heading h3{font:500 23px var(--serif);color:var(--green);margin:0}
+.prompt-helper-heading>div>p:last-child{font-size:10px;color:#89938a;line-height:1.9;margin:9px 0 0}
+.prompt-helper-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:26px}
+.prompt-helper-form{display:flex;flex-direction:column;gap:13px}
+.prompt-helper-actions,.prompt-result-actions{display:flex;gap:9px;flex-wrap:wrap}
+.prompt-result-panel{background:#eeeee7;padding:15px;align-self:stretch}
+.prompt-result-panel textarea{width:100%;min-height:350px;resize:vertical;border:1px solid #e1e5dc;background:#fff;padding:14px;font:11px/1.9 var(--sans);color:#34473e;outline:none}
+.prompt-result-panel textarea:focus{border-color:#9aa98f;box-shadow:0 0 0 2px #375b5710}
+.prompt-result-actions{margin-top:12px}
+.prompt-chatgpt-link{display:inline-flex;align-items:center;justify-content:center;padding:12px 15px;text-decoration:none}
+@media(max-width:650px){.pama-prompt-helper{padding:18px 13px}.prompt-helper-heading{display:block}.prompt-helper-heading h3{font-size:20px}.prompt-helper-heading .beta-tag{display:inline-block;margin-top:12px}.prompt-helper-layout{grid-template-columns:1fr;gap:22px}.prompt-result-panel{order:2}.prompt-result-panel textarea{min-height:260px}.prompt-helper-actions,.prompt-result-actions{display:grid;grid-template-columns:1fr 1fr}.prompt-helper-actions button,.prompt-result-actions button,.prompt-chatgpt-link{font-size:9px;padding:11px 8px}}
