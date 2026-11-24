@@ -31,7 +31,7 @@
 - PAMA Gold：#DFB743
 - Mist Blue：#8190B4
 - Cream：#FFF6E9
-- 品牌核心：Professional · Passion · Modern · Art
+- 品牌核心：Professional（專業）· Active（熱情）· Modern（時尚）· Artistic（藝術）
 - 品牌成立：1989
 
 ## 使用原則
