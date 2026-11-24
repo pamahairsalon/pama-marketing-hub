@@ -3,72 +3,126 @@ const contentCards = [...document.querySelectorAll(".content-card, .care-card")]
 const trendCards = [...document.querySelectorAll(".trend-topic")];
 const postFilters = [...document.querySelectorAll("[data-filter]")];
 const careFilters = [...document.querySelectorAll("[data-care-filter]")];
+const postGrid = document.querySelector("#postGrid");
+const careGrid = document.querySelector("#careGrid");
 
 let postCategory = "作品分享";
 let careCategory = "服務後關心";
-let postPageIndex = 0;
-let carePageIndex = 0;
 
-function renderLibraryPage(kind, matchingCards) {
-  const isPost = kind === "post";
-  const currentIndex = isPost ? postPageIndex : carePageIndex;
-  const safeIndex = Math.max(0, Math.min(currentIndex, matchingCards.length - 1));
-  if (isPost) postPageIndex = matchingCards.length ? safeIndex : 0;
-  else carePageIndex = matchingCards.length ? safeIndex : 0;
-
-  contentCards
-    .filter(card => card.dataset.kind === kind)
-    .forEach(card => { card.hidden = true; });
-  if (matchingCards.length) matchingCards[safeIndex].hidden = false;
-
-  const countLabel = document.querySelector(isPost ? "#postResultCount" : "#careResultCount");
-  const pager = document.querySelector(isPost ? "#postPager" : "#carePager");
-  const pageLabel = document.querySelector(isPost ? "#postPageLabel" : "#carePageLabel");
-  const prev = document.querySelector(isPost ? "#postPrev" : "#carePrev");
-  const next = document.querySelector(isPost ? "#postNext" : "#careNext");
-
-  if (countLabel) {
-    countLabel.textContent = matchingCards.length
-      ? `這個分類共有 ${matchingCards.length} 則參考`
-      : "沒有符合的內容，請更換分類或搜尋關鍵字。";
-  }
-  if (pager) pager.hidden = matchingCards.length === 0;
-  if (pageLabel) pageLabel.textContent = matchingCards.length
-    ? `第 ${safeIndex + 1} / ${matchingCards.length} 則`
-    : "目前沒有內容";
-  if (prev) prev.disabled = safeIndex <= 0 || matchingCards.length <= 1;
-  if (next) next.disabled = safeIndex >= matchingCards.length - 1 || matchingCards.length <= 1;
+function cardsFor(kind) {
+  return [...contentCards].filter(card => card.dataset.kind === kind);
 }
 
-function filterContent() {
+function matchingCardsFor(kind) {
+  const category = kind === "post" ? postCategory : careCategory;
   const query = (searchInput?.value || "").trim().toLocaleLowerCase();
-  const matching = { post: [], care: [] };
+  return cardsFor(kind).filter(card => {
+    const categoryMatch = category === "all" || card.dataset.category === category;
+    const searchMatch = !query || (card.dataset.search + " " + card.innerText).toLocaleLowerCase().includes(query);
+    return categoryMatch && searchMatch;
+  });
+}
+
+function updateSwipePosition(kind) {
+  const isPost = kind === "post";
+  const grid = isPost ? postGrid : careGrid;
+  const position = document.querySelector(isPost ? "#postSwipePosition" : "#careSwipePosition");
+  const countLabel = document.querySelector(isPost ? "#postResultCount" : "#careResultCount");
+  if (!grid) return;
+
+  const cards = matchingCardsFor(kind);
+  if (cards.length === 0) {
+    if (position) position.textContent = "目前沒有內容";
+    if (countLabel) countLabel.textContent = "沒有符合的內容，請更換分類或搜尋關鍵字。";
+    return;
+  }
+
+  const gridRect = grid.getBoundingClientRect();
+  const center = gridRect.left + gridRect.width / 2;
+  let currentIndex = 0;
+  let nearestDistance = Infinity;
+  cards.forEach((card, index) => {
+    const rect = card.getBoundingClientRect();
+    const cardCenter = rect.left + rect.width / 2;
+    const distance = Math.abs(cardCenter - center);
+    if (distance < nearestDistance) {
+      nearestDistance = distance;
+      currentIndex = index;
+    }
+  });
+
+  if (position) position.textContent = `第 ${currentIndex + 1} / ${cards.length} 則`;
+  if (countLabel) countLabel.textContent = `此分類共有 ${cards.length} 則參考`;
+}
+
+function filterContent(resetScroll = true) {
+  const query = (searchInput?.value || "").trim().toLocaleLowerCase();
 
   contentCards.forEach(card => {
-    card.hidden = true;
-    const kind = card.dataset.kind;
     const category = card.dataset.category;
+    const kind = card.dataset.kind;
     const categoryMatch = kind === "post"
       ? (postCategory === "all" || category === postCategory)
       : (careCategory === "all" || category === careCategory);
-    const queryMatch = !query || (card.dataset.search + " " + card.innerText).toLocaleLowerCase().includes(query);
-    if (categoryMatch && queryMatch) matching[kind].push(card);
+    const searchMatch = !query || (card.dataset.search + " " + card.innerText).toLocaleLowerCase().includes(query);
+    card.hidden = !(categoryMatch && searchMatch);
   });
 
   trendCards.forEach(card => {
-    const queryMatch = !query || card.innerText.toLocaleLowerCase().includes(query);
-    card.hidden = !queryMatch;
+    card.hidden = !query || !card.innerText.toLocaleLowerCase().includes(query);
   });
 
-  renderLibraryPage("post", matching.post);
-  renderLibraryPage("care", matching.care);
+  if (resetScroll) {
+    if (postGrid) postGrid.scrollTo({left:0, behavior:"auto"});
+    if (careGrid) careGrid.scrollTo({left:0, behavior:"auto"});
+  }
+  requestAnimationFrame(() => {
+    updateSwipePosition("post");
+    updateSwipePosition("care");
+  });
 }
 
-searchInput?.addEventListener("input", () => {
-  postPageIndex = 0;
-  carePageIndex = 0;
-  filterContent();
-});
+function bindSwipeGrid(kind, grid) {
+  if (!grid) return;
+
+  grid.addEventListener("scroll", () => updateSwipePosition(kind), {passive:true});
+
+  // Touch screens use native horizontal swipe. Desktop users can drag the card rail.
+  let pointerStartX = 0;
+  let scrollStartX = 0;
+  let dragging = false;
+
+  grid.addEventListener("pointerdown", event => {
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    if (event.target.closest("button, a, input, textarea, select, summary, details")) return;
+    dragging = true;
+    pointerStartX = event.clientX;
+    scrollStartX = grid.scrollLeft;
+    grid.classList.add("is-dragging");
+    grid.setPointerCapture(event.pointerId);
+  });
+
+  grid.addEventListener("pointermove", event => {
+    if (!dragging) return;
+    grid.scrollLeft = scrollStartX - (event.clientX - pointerStartX);
+  });
+
+  const endDrag = () => {
+    dragging = false;
+    grid.classList.remove("is-dragging");
+  };
+  grid.addEventListener("pointerup", endDrag);
+  grid.addEventListener("pointercancel", endDrag);
+  grid.addEventListener("lostpointercapture", endDrag);
+
+  grid.addEventListener("keydown", event => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    grid.scrollBy({left:(event.key === "ArrowRight" ? 1 : -1) * grid.clientWidth, behavior:"smooth"});
+  });
+}
+
+searchInput?.addEventListener("input", () => filterContent(true));
 searchInput?.addEventListener("keydown", event => {
   if (event.key === "Enter") {
     const firstVisible = [...contentCards, ...trendCards].find(card => !card.hidden);
@@ -78,36 +132,18 @@ searchInput?.addEventListener("keydown", event => {
 
 postFilters.forEach(button => button.addEventListener("click", () => {
   postCategory = button.dataset.filter;
-  postPageIndex = 0;
   postFilters.forEach(item => item.classList.toggle("active", item === button));
-  filterContent();
+  filterContent(true);
 }));
 careFilters.forEach(button => button.addEventListener("click", () => {
   careCategory = button.dataset.careFilter;
-  carePageIndex = 0;
   careFilters.forEach(item => item.classList.toggle("active", item === button));
-  filterContent();
+  filterContent(true);
 }));
 
-document.querySelector("#postPrev")?.addEventListener("click", () => {
-  postPageIndex = Math.max(0, postPageIndex - 1);
-  filterContent();
-});
-document.querySelector("#postNext")?.addEventListener("click", () => {
-  postPageIndex += 1;
-  filterContent();
-});
-document.querySelector("#carePrev")?.addEventListener("click", () => {
-  carePageIndex = Math.max(0, carePageIndex - 1);
-  filterContent();
-});
-document.querySelector("#careNext")?.addEventListener("click", () => {
-  carePageIndex += 1;
-  filterContent();
-});
-
-// Start with one concise category and one visible example in each section.
-filterContent();
+bindSwipeGrid("post", postGrid);
+bindSwipeGrid("care", careGrid);
+filterContent(true);
 
 const toast = document.querySelector("#toast");
 let toastTimer;
