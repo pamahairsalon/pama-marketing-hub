@@ -22,6 +22,12 @@ function filterContent() {
     const queryMatch = !query || card.innerText.toLocaleLowerCase().includes(query);
     card.hidden = !queryMatch;
   });
+  const postCount = contentCards.filter(card => card.dataset.kind === "post" && !card.hidden).length;
+  const careCount = contentCards.filter(card => card.dataset.kind === "care" && !card.hidden).length;
+  const postCountLabel = document.querySelector("#postResultCount");
+  const careCountLabel = document.querySelector("#careResultCount");
+  if (postCountLabel) postCountLabel.textContent = postCount ? `目前顯示 ${postCount} 則發文參考` : "目前沒有符合的發文內容，請更換分類或搜尋詞。";
+  if (careCountLabel) careCountLabel.textContent = careCount ? `目前顯示 ${careCount} 則關懷話術` : "目前沒有符合的關懷情境，請更換分類或搜尋詞。";
 }
 
 searchInput?.addEventListener("input", filterContent);
