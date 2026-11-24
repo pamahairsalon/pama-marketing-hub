@@ -51,3 +51,10 @@
 此版本是靜態前端網站，內容直接維護於 HTML、CSS、JavaScript 檔案。尚未包含登入、資料庫、管理者後台、門店個人化資訊或內容使用分析。
 
 後續可再建立總管理處專用的安全內容管理介面，讓總管理處能自行更新話題、文案、圖卡範本與外部小工具連結。
+
+
+## 威信 AI 顧問
+PAMA Marketing Hub 的設計師工具區另有威信 AI 顧問專區，作為外部顧問服務入口：
+- 鬍子先生｜威信 AI 顧問・焦點調整與態度練習：https://mr-beard-focus.murphy0885.chatgpt.site/
+- 吳有為｜威信 AI 顧問・經管觀察：https://wuyouwei-salon-journal.murphy0885.chatgpt.site/
+- Zona Wu｜威信 AI 顧問・痛點改善與行動陪伴：https://prestige-stylist-agent.murphy0885.chatgpt.site/
