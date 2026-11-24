@@ -343,3 +343,64 @@ body{font-size:16px;line-height:1.75}
   .advisor-heading>div>p:last-child{font-size:14px}
   .advisor-link{width:100%;min-height:46px;margin-top:4px}
 }
+
+
+/* Expanded social copy library: readability and browsing */
+.posting-guide{
+  max-width:820px;
+  margin:-4px 0 18px;
+  color:#68766d;
+  font-size:15px;
+  line-height:1.9;
+}
+.posting-section .filter-row{gap:9px;margin-bottom:26px}
+.posting-section .filter-button{
+  min-height:40px;
+  padding:9px 17px;
+  font-size:13px;
+  border-radius:2px;
+}
+.posting-section .content-grid{gap:20px}
+.posting-section .content-card{display:flex;flex-direction:column}
+.posting-section .card-content{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  padding:21px 22px 19px;
+}
+.posting-section .card-meta{margin-bottom:12px}
+.posting-section .card-meta span{font-size:13px}
+.posting-section .card-meta small{font-size:12px}
+.posting-section .card-content h3{font-size:19px;line-height:1.55;margin:0 0 8px}
+.posting-section .card-content>p:not(.edit-hint){font-size:14px;line-height:1.85;margin:0 0 13px;color:#738078}
+.posting-section .sample-copy{
+  padding:16px 17px;
+  font-size:15px;
+  line-height:2;
+  color:#4f5d54;
+  border-left:2px solid #d9c18b;
+  background:#f7f8f4;
+}
+.posting-section .edit-hint{
+  font-size:12px;
+  line-height:1.85;
+  color:#8a958c;
+  margin:11px 0 0;
+}
+.posting-section .copy-button{
+  margin-top:auto;
+  padding:15px 0 2px;
+  font-size:13px;
+}
+@media(max-width:700px){
+  .posting-guide{font-size:14px;line-height:1.85}
+  .posting-section .filter-row{gap:7px;margin-bottom:20px}
+  .posting-section .filter-button{font-size:12px;padding:8px 12px;min-height:38px}
+  .posting-section .content-grid{grid-template-columns:1fr;gap:15px}
+  .posting-section .card-visual{height:155px}
+  .posting-section .card-content{padding:18px 17px}
+  .posting-section .card-content h3{font-size:18px}
+  .posting-section .sample-copy{font-size:14px;line-height:1.95;padding:14px}
+  .posting-section .edit-hint{font-size:12px}
+  .posting-section .copy-button{font-size:13px}
+}
