@@ -568,3 +568,110 @@ body{font-size:16px;line-height:1.75}
   .posting-section .content-card,.care-section .care-card{min-height:0}
   .posting-section .card-content{padding:19px 17px}
 }
+
+
+/* Vertical inner-scroll copy libraries with full text and direct copy */
+.posting-section .content-grid,
+.care-section .care-grid{
+  display:flex;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  align-items:stretch;
+  justify-content:flex-start;
+  gap:12px;
+  width:100%;
+  max-width:820px;
+  max-height:620px;
+  min-height:0;
+  margin:0 auto;
+  padding:2px 10px 8px 2px;
+  overflow-x:hidden;
+  overflow-y:auto;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:y proximity;
+  scrollbar-width:thin;
+  scrollbar-color:#b8c5b9 #eef1ec;
+  touch-action:pan-y;
+  cursor:auto;
+}
+.posting-section .content-grid::-webkit-scrollbar,
+.care-section .care-grid::-webkit-scrollbar{width:7px}
+.posting-section .content-grid::-webkit-scrollbar-track,
+.care-section .care-grid::-webkit-scrollbar-track{background:#eef1ec;border-radius:5px}
+.posting-section .content-grid::-webkit-scrollbar-thumb,
+.care-section .care-grid::-webkit-scrollbar-thumb{background:#b8c5b9;border-radius:5px}
+.posting-section .content-grid.is-dragging,
+.care-section .care-grid.is-dragging{cursor:auto;scroll-snap-type:y proximity;user-select:auto}
+.posting-section .content-card,
+.care-section .care-card{
+  flex:0 0 auto;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  margin:0;
+  scroll-snap-align:start;
+  scroll-snap-stop:normal;
+}
+.posting-section .content-card[hidden],
+.care-section .care-card[hidden]{display:none!important}
+.posting-section .card-visual{display:none}
+.posting-section .card-content{padding:19px 22px 18px}
+.posting-section .content-card h3,
+.care-section .care-card h3{font-size:19px;line-height:1.5;margin-top:8px}
+.posting-section .content-card>p:not(.edit-hint),
+.care-section .care-scene{font-size:13px;line-height:1.75}
+.posting-section .sample-copy,
+.care-section .message-copy{
+  display:block;
+  margin:12px 0 0;
+  padding:14px 16px;
+  background:#f7f8f4;
+  border-left:2px solid #d9c18b;
+  color:#53635a;
+  font-size:14px;
+  line-height:1.95;
+  white-space:normal;
+}
+.posting-section .copy-preview,
+.care-section .copy-preview,
+.posting-section .copy-details,
+.care-section .copy-details{display:none!important}
+.posting-section .edit-hint,
+.care-section .edit-hint{font-size:12px;line-height:1.8;margin:9px 0 0}
+.posting-section .copy-button,
+.care-section .copy-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:auto;
+  min-height:40px;
+  margin:12px 0 0;
+  padding:9px 16px;
+  border:0;
+  border-radius:3px;
+  background:var(--green);
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+}
+.posting-section .copy-button:hover,
+.care-section .copy-button:hover{background:var(--gold);color:var(--deep)}
+.posting-section .copy-button span,
+.care-section .copy-button span{margin-left:10px;color:var(--gold)}
+.posting-section .copy-button:hover span,
+.care-section .copy-button:hover span{color:var(--deep)}
+@media(max-width:700px){
+  .posting-section .content-grid,
+  .care-section .care-grid{
+    max-height: min(66vh, 570px);
+    padding-right:7px;
+    gap:10px;
+  }
+  .posting-section .card-content{padding:17px 15px}
+  .posting-section .sample-copy,
+  .care-section .message-copy{font-size:14px;line-height:1.9;padding:12px 13px}
+  .posting-section .copy-button,
+  .care-section .copy-button{min-height:42px;font-size:13px}
+}
