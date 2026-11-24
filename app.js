@@ -23,7 +23,7 @@ function filterContent(resetScroll = true) {
   });
 
   trendCards.forEach(card => {
-    card.hidden = !query || !card.innerText.toLocaleLowerCase().includes(query);
+    card.hidden = Boolean(query) && !card.innerText.toLocaleLowerCase().includes(query);
   });
 
   const postCount = contentCards.filter(card => card.dataset.kind === "post" && !card.hidden).length;
@@ -309,7 +309,7 @@ function renderGraphic() {
 
   ctx.fillStyle = "#9A9B8E";
   ctx.font = "16px Arial, sans-serif";
-  ctx.fillText("PROFESSIONAL · PASSION · MODERN · ART", 68, height - 47);
+  ctx.fillText("PROFESSIONAL · ACTIVE · MODERN · ARTISTIC", 68, height - 47);
   ctx.textAlign = "right";
   ctx.fillStyle = "#A28B4D";
   ctx.fillText("PAMA SALON", 1018, height - 47);
@@ -435,7 +435,7 @@ function buildPamaPrompt(){
  const extra=(pamaPromptExtra?.value||"").trim();
  pamaPromptResult.value=[
  "請你扮演「帕瑪造型沙龍」的專業社群與顧客服務內容助理，協助我完成以下工作。","","【品牌背景與語氣】",
- "品牌：帕瑪造型沙龍（PAMA Hair Salon）。品牌核心為 Professional（專業）、Passion（熱情）、Modern（時尚）、Art（藝術）。",
+ "品牌：帕瑪造型沙龍（PAMA Hair Salon）。品牌核心為 Professional（專業）、Active（熱情）、Modern（時尚）、Artistic（藝術）。",
  "請使用台灣繁體中文，語氣自然、專業、有溫度及質感；避免浮誇、硬銷、過度制式或中國用語。不要把男士燙髮當成品牌整體定位。",
  "不得自行編造價格、優惠、營業時間、門店資訊或服務承諾；資訊不足時請先詢問，不要猜測。","","【本次任務】",
  "工作類型："+item.name,"工作目標："+item.goal,"發布／使用平台："+(pamaPromptPlatform?.value||"Instagram 貼文"),
